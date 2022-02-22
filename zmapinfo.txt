@@ -106,6 +106,21 @@ Skill hardcore
 	Name = "$ASH_SKHARDCORE"
 	MustConfirm = "$ASH_SKHARDCORECONFIRM"
 }
+Skill lunatic
+{
+	DisableCheats
+	HealthFactor = 2.0
+	DamageFactor = 2.0
+	Aggressiveness = 1.0
+	SpawnFilter = nightmare
+	SpawnMulti
+	TotalInfighting
+	InstantReaction
+	NoPain
+	ACSReturn = 4
+	Name = "$ASH_SKLUNATIC"
+	MustConfirm = "$ASH_SKLUNATICCONFIRM"
+}
 
 Map TITLEMAP "CHILD OF ASH Title Map"
 {

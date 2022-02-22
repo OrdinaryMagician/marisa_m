@@ -1,16 +1,35 @@
 [default]
 // tags, pickups
+T_MARISAUNARMED = "Unarmed";
+T_MARISASWORD = "Beastcutter";
+T_MARISASLAB = "Demonslayer";
+T_MARISAHAMMER = "Planetoid";
+T_MARISAPISTOL = "Wrathcaster";
+T_MARISASHOTGUN = "Chthon's Fist";
+T_MARISABEAMGUN = "Antares Beam Cannon";
+T_MARISAPISTOLAMMO = "23mm Wrath Round";
+T_MARISAPISTOLAMMOS = "23mm Wrath Rounds";
+T_MARISASHOTGUNAMMO = "20mm Frag-C Shell";
+T_MARISASHOTGUNAMMOS = "20mm Frag-C Shells";
+T_MARISABEAMAMMO = "Antaresian Cell";
+T_MARISABEAMAMMOS = "Antaresian Cells";
+T_MARISABOMB = "Hellion Cherry";
+T_MARISABOMBS = "Hellion Cherries";
+T_MARISASPELL1 = "Abyssal Embers";
+T_MARISASPELL2 = "Greater Eruption";
+T_MARISASPELL3 = "Red Sun";
+T_MARISA = "Marisa Azanth";
 // quit messages
-QUITMSG = "";
-QUITMSG1 = "";
-QUITMSG2 = "";
-QUITMSG3 = "";
-QUITMSG4 = "";
-QUITMSG5 = "";
-QUITMSG6 = "";
-QUITMSG7 = "";
-QUITMSG8 = "";
-QUITMSG9 = "";
+QUITMSG = "It's a shame to see you go.";
+QUITMSG1 = "Let's play some more soon.";
+QUITMSG2 = "Goodbye.";
+QUITMSG3 = "Are you tired? You should rest.";
+QUITMSG4 = "My blade can cut so many things.";
+QUITMSG5 = "Is it time to go?";
+QUITMSG6 = "See you next time.";
+QUITMSG7 = "Is it break time?";
+QUITMSG8 = "I will wait for your return.";
+QUITMSG9 = "I'm not scary.";
 // misc
 ASH_TITLEPRESENTSA = "UnSX Team";
 ASH_TITLEPRESENTSB = "presents";

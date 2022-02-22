@@ -34,8 +34,8 @@ Class MarisaPlayer : SWWMPlayer
 
 	override Weapon PickWeapon( int slot, bool checkammo )
 	{
-		if ( (slot >= 6) && (slot <= 9) ) EventHandler.SendNetworkEvent("marisaspellslot",slot-6);
-		else if ( slot == 0 ) EventHandler.SendNetworkEvent("marisaspellslot",4);
+		if ( (slot >= 8) && (slot <= 9) ) EventHandler.SendNetworkEvent("marisaspellslot",slot-8);
+		else if ( slot == 0 ) EventHandler.SendNetworkEvent("marisaspellslot",2);
 		else return Super.PickWeapon(slot,checkammo);
 		return player.ReadyWeapon;
 	}

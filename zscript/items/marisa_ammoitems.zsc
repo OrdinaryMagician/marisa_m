@@ -1,0 +1,111 @@
+// ammo for Marisa mod
+
+// Mana, it's just there
+Class MarisaMana : SWWMAmmo
+{
+	Default
+	{
+		Inventory.MaxAmount 200;
+		+INVENTORY.UNDROPPABLE;
+		+INVENTORY.UNTOSSABLE;
+		+INVENTORY.UNCLEARABLE;
+		+INVENTORY.QUIET;
+	}
+}
+
+Class MarisaPistolAmmo : SWWMAmmo
+{
+	Default
+	{
+		Tag "$T_MARISAPISTOLAMMO";
+		SWWMAmmo.PickupTag "MARISAPISTOLAMMO";
+		Inventory.Amount 1;
+		Inventory.MaxAmount 120;
+		Ammo.DropAmount 2;
+	}
+}
+Class MarisaPistolAmmo_2 : MarisaPistolAmmo
+{
+	Default
+	{
+		Inventory.Amount 2;
+	}
+}
+Class MarisaPistolAmmo_4 : MarisaPistolAmmo
+{
+	Default
+	{
+		Inventory.Amount 4;
+	}
+}
+Class MarisaPistolAmmo_8 : MarisaPistolAmmo
+{
+	Default
+	{
+		Inventory.Amount 8;
+	}
+}
+
+Class MarisaShotgunAmmo : SWWMAmmo
+{
+	Default
+	{
+		Tag "$T_MARISASHOTGUNAMMO";
+		SWWMAmmo.PickupTag "MARISASHOTGUNAMMO";
+		Inventory.Amount 1;
+		Inventory.MaxAmount 70;
+		Ammo.DropAmount 2;
+	}
+}
+Class MarisaShotgunAmmo_2 : MarisaShotgunAmmo
+{
+	Default
+	{
+		Inventory.Amount 2;
+	}
+}
+Class MarisaShotgunAmmo_4 : MarisaShotgunAmmo
+{
+	Default
+	{
+		Inventory.Amount 4;
+	}
+}
+Class MarisaShotgunAmmo_10 : MarisaShotgunAmmo
+{
+	Default
+	{
+		Inventory.Amount 10;
+	}
+}
+
+Class MarisaBeamAmmo : SWWMAmmo
+{
+	Default
+	{
+		Tag "$T_MARISABEAMAMMO";
+		SWWMAmmo.PickupTag "MARISABEAMAMMO";
+		Inventory.Amount 1;
+		Inventory.MaxAmount 20;
+		Ammo.DropAmount 1;
+	}
+}
+Class MarisaBeamAmmo_2 : MarisaBeamAmmo
+{
+	Default
+	{
+		Inventory.Amount 2;
+	}
+}
+
+Class MarisaBombAmmo : SWWMAmmo
+{
+	Default
+	{
+		Tag "$T_MARISABOMB";
+		SWWMAmmo.PickupTag "MARISABOMB";
+		Inventory.Amount 1;
+		Inventory.MaxAmount 30;
+		Ammo.DropAmount 1;
+	}
+}

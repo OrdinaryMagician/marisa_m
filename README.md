@@ -74,7 +74,7 @@ A very beefy handgun, generally only given to those who can manage to wield it. 
 
 ### 23mm HEI Bullets *[Bullets, Wand Crystals, Claw Orbs, Flechette]*
 
-Big bullets for a big gun, which burst into scalding fragments on impact. Found alone or in bundles.
+Big bullets for a big gun, which burst into scalding fragments on impact. Found in clips or in boxes.
 
 ### Slot 6 - Chthon's Fist *[Shotgun / Super Shotgun, Ethereal Crossbow, Frost Shards]*
 
@@ -97,8 +97,8 @@ Somewhat sizable shotgun shells. You'll find 'em in bunches, or boxes. **Frag-C*
 This large weapon is designed for burning through thick armor and hitting anything hiding on the other side. Capable of melting holes through most metals, as well as dense stone, nothing can truly stop the advance of this thing. Naturally, **Marisa** wanted to get her hands on one of these, as the prospect of raining down a stream of pure incandescent destruction on monsters sounds just absolutely awesome.
 
 - **Primary fire:** Steady stream of piercing plasma.
-- **Secondary fire:** Overdrive mode, causes the beam to burn harder and go deeper, but needs at least one full cell.
-- **Reload:** Does what you'd expect. The weapon can feed from two individual cells, for 2x10 shots.
+- **Secondary fire:** Overdrive mode, causes the beam to burn harder and go deeper, but needs at least one full cell pack.
+- **Reload:** Does what you'd expect. The weapon can feed from two individual cell packs, for 2x10 shots. Note that for safety reasons, an unsealed cell pack can't be removed from the weapon until fully depleted.
 
 ### Antaresian Cells *[Cells, Runes, Green Mana]*
 

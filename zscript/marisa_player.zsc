@@ -1,0 +1,42 @@
+// Here comes a not-so-ordinary witch
+
+Class MarisaPlayer : SWWMPlayer
+{
+	int SpellSel;
+
+	Default
+	{
+		Tag "$T_MARISA";
+		Speed 1;
+		Radius 16;
+		Height 56;
+		Mass 100;
+		PainChance 255;
+		Health 100;
+		Player.DisplayName "$T_MARISA";
+		Player.StartItem "MarisaSword";
+		Player.StartItem "MarisaPistol";
+		Player.StartItem "MarisaPistolAmmo", 10;
+		Player.StartItem "MarisaUnarmed";
+		Player.StartItem "MarisaMana", 100;
+		Player.StartItem "MarisaInternalArmor";
+		Player.AttackZOffset 16;
+		Player.ViewHeight 52;
+		Player.AirCapacity 0;
+		Player.GruntSpeed 20;
+		Player.ForwardMove 1., 1.;
+		Player.SideMove 1., 1.;
+		Player.SoundClass "marisa";
+		DamageFactor "Drowning", 0.;
+		+DONTMORPH;
+		SWWMPlayer.ResurrectType RT_RESPAWN;
+	}
+
+	override Weapon PickWeapon( int slot, bool checkammo )
+	{
+		if ( (slot >= 6) && (slot <= 9) ) EventHandler.SendNetworkEvent("marisaspellslot",slot-6);
+		else if ( slot == 0 ) EventHandler.SendNetworkEvent("marisaspellslot",4);
+		else return Super.PickWeapon(slot,checkammo);
+		return player.ReadyWeapon;
+	}
+}

@@ -1,0 +1,5 @@
+// Fisticuffs
+
+Class MarisaUnarmed : SWWMWeapon
+{
+}

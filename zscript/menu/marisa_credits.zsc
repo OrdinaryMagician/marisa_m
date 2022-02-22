@@ -1,0 +1,14 @@
+// mod credits
+
+Class MarisaCreditsMenu : SWWMCreditsMenu
+{
+	override void ChildInit( Menu parent )
+	{
+		cmusic.Push(new("SWWMCreditsEntry").Init("Teque","Stuck"));
+		cmusic.Push(new("SWWMCreditsEntry").Init("Teque","State of Payne"));
+	}
+	override String, int GetCreditsMus()
+	{
+		return "music/marisa_titlemus.ogg", 0;
+	}
+}

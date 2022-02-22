@@ -1,0 +1,53 @@
+// Child of Ash event processing
+
+extend Class SWWMHandler
+{
+	transient int WeaponFlash[10];
+	transient int spellchangetic;
+	transient ui int lastspell;
+
+	private ui void ModConsoleProcess( ConsoleEvent e )
+	{
+		// nothing here yet
+	}
+
+	private void ModNetworkProcess( ConsoleEvent e )
+	{
+		if ( e.Name ~== "marisaweaponreceive" )
+		{
+			if ( (e.Args[0] < 0) || (e.Args[0] > 9) ) return;
+			WeaponFlash[e.Args[0]] = gametic+25;
+		}
+		else if ( e.Name ~== "marisaspellslot" )
+		{
+			if ( (e.Args[0] < -2) || (e.Args[0] > 2) ) return;
+			let mari = MarisaPlayer(players[e.player].mo);
+			if ( mari )
+			{
+				if ( e.Args[0] == -2 ) mari.SpellSel = (mari.SpellSel>0)?(mari.SpellSel-1):2;
+				else if ( e.Args[0] == -1 ) mari.SpellSel = (mari.SpellSel+1)%3;
+				else mari.SpellSel = e.Args[0];
+				if ( e.player == consoleplayer )
+					spellchangetic = gametic+1;
+			}
+		}
+	}
+
+	override void UiTick()
+	{
+		if ( gametic != spellchangetic ) return;
+		let mari = MarisaPlayer(players[consoleplayer].mo);
+		if ( !mari ) return;
+		if ( mari.SpellSel != lastspell )
+		{
+			let bar = SWWMStatusBar(statusbar);
+			if ( bar )
+			{
+				bar.ntagstr = StringTable.Localize("$T_MARISASPELL"..(mari.SpellSel+1));
+				bar.ntagtic = level.totaltime;
+				bar.ntagcol = nametagcolor;
+			}
+		}
+		lastspell = mari.SpellSel;
+	}
+}

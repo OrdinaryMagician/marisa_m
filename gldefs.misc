@@ -1,0 +1,98 @@
+HardwareShader Texture "graphics/tempbg.png"
+{
+	Shader "shaders/glsl/Fuzz.fp"
+	Texture "noisetex" "textures/graynoise.png"
+	Define "MARISACOLORS"
+}
+HardwareShader Texture "graphics/MarisaIcon.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_marisa.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_marisa_eyes.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_marisa_dark.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_marisa_dark_eyes.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_0.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_1.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_2.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_3.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_4.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_5.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_6.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_dust_7.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_0.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_1.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_2.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_3.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_4.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_5.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_6.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_smoke_7.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/MarisaLogo.png"
+{
+	Shader "shaders/glsl/MarisaLogoAnimated.fp"
+	// what no 2d arrays does to a mf
+	Texture "Layer1" "graphics/MarisaLogo_Layer1.png"
+	Texture "Layer2" "graphics/MarisaLogo_Layer2.png"
+	Texture "fadetex" "LOGOFADE"
+}

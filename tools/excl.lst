@@ -1,0 +1,14 @@
+.git
+*.md
+docimg
+models/*.blend
+models/*.blend1
+models/*.xcf
+models/modelnotes.txt
+tools
+graphics/HUD/Icons/I_Embiggener.png
+models/Embiggener*
+sounds/items/embiggen.ogg
+zscript/items/swwm_ammoextra.zsc
+gldefs.hammerspace
+modeldef.hammerspace

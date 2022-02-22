@@ -1,0 +1,33 @@
+// shared cvars
+nosave float ash_flashstrength = 1.0;
+user float ash_bumpstrength = 1.0;
+nosave int ash_hudmargin = 10;
+nosave bool ash_hudscale = false;
+nosave int ash_maxshown = 4;
+nosave int ash_maxshownbig = 10;
+nosave int ash_maxpickup = 5;
+nosave int ash_chatduration = 25;
+nosave int ash_msgduration = 5;
+nosave int ash_pickduration = 3;
+nosave bool ash_shaders = true;
+server bool ash_blood = true;
+server int ash_maxblood = 400;
+server int ash_maxgibs = 100;
+server int ash_maxcasings = 200;
+server int ash_maxdebris = 500;
+nosave bool ash_fuzz = true;
+server int ash_enemydrops = 0;
+server bool ash_shadows = true;
+nosave int ash_shadowdist = 2000;
+nosave int ash_forcestats = 1;
+server int ash_drlaskill = 3;
+server int ash_ps_fullreset = 0;
+server int ash_ps_resetammo = 0;
+server int ash_ps_resetitems = 0;
+server int ash_ps_resethealth = 0;
+nosave bool ash_weapontooltips = true;
+nosave string ash_tooltipshown = "";
+nosave noarchive bool ash_tooltipnote = false;
+nosave bool ash_mm_enable = true;
+nosave int ash_playtime = 0;
+// mod-specific cvars

@@ -1,0 +1,55 @@
+// CHILD OF ASH HUD
+
+Class MarisaStatusBar : SWWMStatusBar
+{
+	override void FlushNotify()
+	{
+		Super.FlushNotify();
+	}
+	override void UpdateInterpolators()
+	{
+	}
+	// hello??? why is this function clearscope???
+	override void ReceivedWeapon( Weapon weapn )
+	{
+		if ( weapn is 'MarisaUnarmed' ) return;	// ignore this one, in case it's "auto-given" by scripts
+		Super.ReceivedWeapon(weapn);
+		int dummy, slot;
+		[dummy, slot] = players[consoleplayer].weapons.LocateWeapon(weapn.GetClass());
+		EventHandler.SendNetworkEvent("marisaweaponreceive",slot);
+	}
+	override void Init()
+	{
+		Super.Init();
+		bAlwaysDrawInv = true;
+		bAlwaysAboveInv = true;
+	}
+	override void GetMinimapColors()
+	{
+		mm_backcolor = "10 10 10";
+		mm_cdwallcolor = "70 70 70";
+		mm_efwallcolor = "c0 c0 c0";
+		mm_fdwallcolor = "90 90 90";
+		mm_interlevelcolor = "ff 00 60";
+		mm_intralevelcolor = "00 60 ff";
+		mm_lockedcolor = "00 90 80";
+		mm_notseencolor = "30 30 30";
+		mm_portalcolor = "40 30 20";
+		mm_secretsectorcolor = "80 00 ff";
+		mm_secretwallcolor = "60 40 80";
+		mm_specialwallcolor = "ff a0 00";
+		mm_tswallcolor = "40 40 40";
+		mm_unexploredsecretcolor = "40 00 80";
+		mm_wallcolor = "ff ff ff";
+		mm_yourcolor = "ff 00 00";
+	}
+
+	override void DrawWeapons()
+	{
+	}
+
+	override int DrawStatus()
+	{
+		return 25;
+	}
+}

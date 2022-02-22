@@ -1,0 +1,18 @@
+[default]
+// keybinds
+// skills
+ASH_SKCHILL="\cvMild Spirit\c-";
+ASH_SKEASY="\cdPlayful Spirit\c-";
+ASH_SKNORMAL="\cfBrave Spirit\c-";
+ASH_SKHARD="\ciHarsh Spirit\c-";
+ASH_SKHARDCORE="\crCruel Spirit\c-";
+ASH_SKHARDCORECONFIRM="\crAre you sure you want to do that?\nYou might get your ass kicked.\c-\n\n\cjFast monsters\n1.5x monster health & damage\n25% extra aggressiveness\nCheats are disabled\nCoop monsters will spawn\c-\n\n(Press Y for a challenge)";
+ASH_SKLUNATIC="\cmDreadful Spirit\c-";
+ASH_SKLUNATICCONFIRM="\cmYou've clearly got a death wish.\nChoose this skill if you dare.\c-\n\n\cjAll changes from Cruel Spirit\n+\n2x speedup for all enemy actions\nEnemy projectiles will multiply\nAdditional enemies may spawn\nEnemies react instantly\nEnemies don't flinch\nInfighting is disabled\c-\n\n(Press Y to die instantly)";
+// mod menu
+ASH_MTITLE = "CHILD OF ASH Options";
+ASH_MCREDS = "CHILD OF ASH Credits";
+// credits
+ASH_CSTITLE = "UnSX Side Story: Marisa";
+ASH_CSTITLE2 = "The Reaper's Child Lays Waste Upon Evil";
+// Help menu

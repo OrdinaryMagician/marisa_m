@@ -1,0 +1,22 @@
+[default]
+// tags, pickups
+// quit messages
+QUITMSG = "";
+QUITMSG1 = "";
+QUITMSG2 = "";
+QUITMSG3 = "";
+QUITMSG4 = "";
+QUITMSG5 = "";
+QUITMSG6 = "";
+QUITMSG7 = "";
+QUITMSG8 = "";
+QUITMSG9 = "";
+// misc
+ASH_TITLEPRESENTSA = "UnSX Team";
+ASH_TITLEPRESENTSB = "presents";
+ASH_TITLEMODBYA = "a mod by";
+ASH_TITLEMODBYB = "Marisa Kirisame";
+ASH_TITLEINTROA = "\"And so the child of fire and death will soon walk the Earth,";
+ASH_TITLEINTROB = "and the many wicked beasts of Hell shall learn to fear her,";
+ASH_TITLEINTROC = "as her blade will cleave them apart, down to the very last.\"";
+// weapon tooltips

@@ -1,0 +1,120 @@
+GameInfo
+{
+	AddEventHandlers = "SWWMStaticHandler", "SWWMHandler", "SWWMBrutalHandler", "SWWMHDoomHandler"
+	PlayerClasses = "MarisaPlayer"
+	StatusBarClass = "MarisaStatusBar"
+	QuitSound = "misc/teleport"
+	QuitMessages = "$QUITMSG"
+	ChatSound = "misc/chat"
+	NoMergePickupMsg = true
+	CursorPic = "graphics/marisacurs.png"
+	DimColor = "Black"
+	DimAmount = 0.5
+	BlurAmount = 0
+	Endoom = "ENDMARI"
+	PickupColor = "White"
+	MenuFontColor_Title = "Ice"
+	MenuFontColor_Label = "DarkGray"
+	MenuFontColor_Value = "Black"
+	MenuFontColor_Action = "DarkGray"
+	MenuFontColor_Header = "Black"
+	MenuFontColor_Highlight = "White"
+	MenuFontColor_Selection = "White"
+	MenuSliderColor = "DarkGray"
+	MenuSliderBackColor = "Black"
+	MenuBackButton = "graphics/marisaback.png"
+	MessageBoxClass = "SWWMMessageBox"
+	HelpMenuClass = "SWWMHelpMenu"
+	MenuDelegateClass = "SWWMMenuDelegate"
+	BorderFlat = "graphics/bord_flat.png"
+	Border = 2, 0, "graphics/bord_tr.png", "graphics/bord_t.png", "graphics/bord_tl.png", "graphics/bord_r.png", "graphics/bord_l.png", "graphics/bord_br.png", "graphics/bord_b.png", "graphics/bord_bl.png"
+	ForceTextInMenus = true
+	TelefogHeight = 28
+	// precache all intro sounds
+	PrecacheSounds = "title/fadein"
+	// precache all intro textures, to avoid hiccups
+	PrecacheTextures = "graphics/MarisaLogo.png",
+		"graphics/MarisaLogo_Layer1.png",
+		"graphics/MarisaLogo_Layer2.png",
+		"graphics/title_grad.png",
+		"graphics/title_marisa.png",
+		"graphics/title_marisa_eyes.png",
+		"graphics/title_marisa_dark.png",
+		"graphics/title_marisa_dark_eyes.png",
+		"graphics/title_smoke_0.png",
+		"graphics/title_smoke_1.png",
+		"graphics/title_smoke_2.png",
+		"graphics/title_smoke_3.png",
+		"graphics/title_smoke_4.png",
+		"graphics/title_smoke_5.png",
+		"graphics/title_smoke_6.png",
+		"graphics/title_smoke_7.png",
+		"graphics/title_dust_0.png",
+		"graphics/title_dust_1.png",
+		"graphics/title_dust_2.png",
+		"graphics/title_dust_3.png",
+		"graphics/title_dust_4.png",
+		"graphics/title_dust_5.png",
+		"graphics/title_dust_6.png",
+		"graphics/title_dust_7.png",
+		"graphics/M_MARISA.png"
+}
+
+ClearSkills
+
+Skill chill
+{
+	AutoUseHealth
+	DamageFactor = 0.5
+	EasyBossBrain
+	SlowMonsters
+	SpawnFilter = baby
+	ACSReturn = 0
+	Name = "$ASH_SKCHILL"
+}
+Skill easy
+{
+	DamageFactor = 0.75
+	SpawnFilter = easy
+	ACSReturn = 1
+	Name = "$ASH_SKEASY"
+}
+Skill normal
+{
+	SpawnFilter = normal
+	ACSReturn = 2
+	Name = "$ASH_SKNORMAL"
+	DefaultSkill
+}
+Skill hard
+{
+	DamageFactor = 1.25
+	SpawnFilter = hard
+	ACSReturn = 3
+	Name = "$ASH_SKHARD"
+}
+Skill hardcore
+{
+	DisableCheats
+	FastMonsters
+	HealthFactor = 1.5
+	DamageFactor = 1.5
+	Aggressiveness = 0.25
+	SpawnFilter = nightmare
+	SpawnMulti
+	ACSReturn = 4
+	Name = "$ASH_SKHARDCORE"
+	MustConfirm = "$ASH_SKHARDCORECONFIRM"
+}
+
+Map TITLEMAP "CHILD OF ASH Title Map"
+{
+	Music = ""
+	EventHandlers = "MarisaTitleStuff"
+}
+
+DamageType EndLevel
+{
+	NoArmor
+	Obituary = "$O_ENDLEVEL"
+}

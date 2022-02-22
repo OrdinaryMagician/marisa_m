@@ -1,0 +1,300 @@
+// Things for the titlemap
+
+Struct TitleSmoke
+{
+	int age, maxage;
+	Vector2 pos, vel;
+	double ang, angvel;
+	double scale;
+	double alpha;
+}
+
+Class MarisaTitleStuff : EventHandler
+{
+	ui TextureID bgtex;
+	ui TextureID marisatex[4];
+	ui TitleSmoke smk[128];
+	ui TextureID smk_tex[8];
+	ui TitleSmoke ash[128];
+	ui TextureID ash_tex[8];
+	ui TextureID logotex;
+	ui TextureID gradtex;
+	ui TextureID camtex;	// must be drawn for shaders to actually use it
+	int titletimer;
+	bool bFadeFromBlack;
+
+	private ui void TickSmokeLayers()
+	{
+		for ( int i=0; i<128; i++ )
+		{
+			int presim = 0;
+			if ( smk[i].age >= smk[i].maxage )
+			{
+				if ( smk[i].maxage == 0 ) presim = Random[UIStuff](0,60);
+				else presim = -1;
+				smk[i].age = Random[UIStuff](-20,0);
+				smk[i].maxage = Random[UIStuff](60,120);
+				smk[i].pos = (FRandom[UIStuff](-512.,512.),FRandom[UIStuff](0.,256.));
+				smk[i].vel = (FRandom[UIStuff](-1.,3.),FRandom[UIStuff](-2.,-6.));
+				smk[i].ang = FRandom[UIStuff](0.,360.);
+				smk[i].angvel = FRandom[UIStuff](1.,4.)*RandomPick[UIStuff](-1,1);
+				smk[i].scale = FRandom[UIStuff](2.,4.);
+			}
+			for ( int j=0; j<=presim; j++ )
+			{
+				smk[i].age++;
+				if ( smk[i].age <= 0 ) continue;
+				smk[i].pos += smk[i].vel;
+				smk[i].ang += smk[i].angvel;
+			}
+		}
+		for ( int i=0; i<128; i++ )
+		{
+			int presim = 0;
+			if ( ash[i].age >= ash[i].maxage )
+			{
+				if ( ash[i].maxage == 0 ) presim = Random[UIStuff](0,90);
+				else presim = -1;
+				ash[i].age = Random[UIStuff](-20,0);
+				ash[i].maxage = Random[UIStuff](120,480);
+				ash[i].pos = (FRandom[UIStuff](-512.,512.),FRandom[UIStuff](0.,64.));
+				ash[i].vel = (FRandom[UIStuff](-1.5,1.5),FRandom[UIStuff](-.5,-2.));
+				ash[i].ang = FRandom[UIStuff](0.,360.);
+				ash[i].angvel = FRandom[UIStuff](.2,.8)*RandomPick[UIStuff](-1,1);
+				ash[i].scale = FRandom[UIStuff](4.,8.);
+				ash[i].alpha = FRandom[UIStuff](.3,.8);
+			}
+			for ( int j=0; j<=presim; j++ )
+			{
+				ash[i].age++;
+				if ( ash[i].age <= 0 ) continue;
+				ash[i].pos += ash[i].vel;
+				ash[i].ang += ash[i].angvel;
+			}
+		}
+	}
+
+	override void WorldTick()
+	{
+		titletimer++;
+	}
+
+	override void WorldLoaded( WorldEvent e )
+	{
+		let f = LogoFader(Actor.Spawn("LogoFader"));
+		f.hnd = self;
+		TexMan.SetCameraToTexture(f,"LOGOFADE",90);
+		titletimer = 0;
+		let shnd = SWWMStaticHandler(StaticEventHandler.Find("SWWMStaticHandler"));
+		if ( !shnd ) return;
+		if ( shnd.titlefirst )
+		{
+			titletimer = GameTicRate*30;	// skip to logo
+			bFadeFromBlack = true;	// fade from black
+		}
+		shnd.titlefirst = true;
+	}
+
+	override void UiTick()
+	{
+		if ( titletimer == 1 ) S_ChangeMusic("music/marisa_pretitle.ogg",looping:false);
+		else if ( titletimer == (31*GameTicRate) ) S_StartSound("title/fadein",CHAN_WEAPON,CHANF_OVERLAP|CHANF_UI,1.,0.);
+		else if ( titletimer == (32*GameTicRate) ) S_ChangeMusic("music/marisa_titlemus.ogg");
+		TickSmokeLayers();
+		if ( gamestate != GS_LEVEL ) return;
+		// you're not supposed to be here
+		Menu.SetMenu('EndGameMenu');
+		let m = MessageBoxMenu(Menu.GetCurrentMenu());
+		if ( m ) m.HandleResult(true);
+		// special thanks to marrub for this absolute crime
+	}
+
+	private ui void RenderSmokeLayer( RenderEvent e, double GameSecs, bool back, double alpha = 1. )
+	{
+		double zoomscl = Screen.GetHeight()/600.;
+		int imin = back?64:0;
+		int imax = back?128:64;
+		int base = back?250:750;
+		for ( int i=imin; i<imax; i++ )
+		{
+			if ( !smk[i].maxage ) continue;
+			if ( !smk_tex[i%8] ) smk_tex[i%8] = TexMan.CheckForTexture("graphics/title_smoke_"..(i%8)..".png",TexMan.Type_Any);
+			Vector2 pos = (smk[i].pos+smk[i].vel*e.FracTic+(0,base))*zoomscl+(Screen.GetWidth()/2,0);
+			double scl = smk[i].scale*zoomscl;
+			double ang = smk[i].ang+smk[i].angvel*e.FracTic;
+			double alf = cos((smk[i].age/double(smk[i].maxage))*90)*alpha;
+			alf *= clamp(smk[i].age/10.,0,1);
+			int col = int(clamp((GameSecs-28.)/3.,.5,1.)*32);
+			Screen.DrawTexture(smk_tex[i%8],false,pos.x,pos.y,DTA_CenterOffset,true,DTA_Rotate,ang,DTA_ScaleX,scl,DTA_ScaleY,scl,DTA_Alpha,alf,DTA_LegacyRenderStyle,STYLE_AddShaded,DTA_FillColor,Color(32,col,col));
+		}
+		if ( back ) return;
+		base = 600;
+		double GameSecs = (titletimer+e.FracTic)/GameTicRate;
+		for ( int i=0; i<128; i++ )
+		{
+			if ( !ash[i].maxage ) continue;
+			if ( !ash_tex[i%8] ) ash_tex[i%8] = TexMan.CheckForTexture("graphics/title_dust_"..(i%8)..".png",TexMan.Type_Any);
+			Vector2 pos = (ash[i].pos+ash[i].vel*e.FracTic+(0,base))*zoomscl+(Screen.GetWidth()/2,0);
+			double scl = ash[i].scale*zoomscl;
+			double ang = ash[i].ang+ash[i].angvel*e.FracTic;
+			double alf = 1.-(ash[i].age/double(ash[i].maxage))**2.;
+			alf *= clamp(ash[i].age/5.,0,1);
+			alf *= ash[i].alpha;
+			int col = int(clamp((GameSecs-30.)/2.,0.,1.)*128);
+			Screen.DrawTexture(ash_tex[i%8],false,pos.x,pos.y,DTA_CenterOffset,true,DTA_Rotate,ang,DTA_ScaleX,scl,DTA_ScaleY,scl,DTA_Alpha,alf,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(col,col,col));
+		}
+	}
+
+	override void RenderUnderlay( RenderEvent e )
+	{
+		Screen.DrawTexture(camtex,false,0,0);
+		if ( !camtex ) camtex = TexMan.CheckForTexture("LOGOFADE",TexMan.Type_Any);
+		if ( !marisatex[0] ) marisatex[0] = TexMan.CheckForTexture("graphics/title_marisa_dark.png",TexMan.Type_Any);
+		if ( !marisatex[1] ) marisatex[1] = TexMan.CheckForTexture("graphics/title_marisa_dark_eyes.png",TexMan.Type_Any);
+		if ( !marisatex[2] ) marisatex[2] = TexMan.CheckForTexture("graphics/title_marisa.png",TexMan.Type_Any);
+		if ( !marisatex[3] ) marisatex[3] = TexMan.CheckForTexture("graphics/title_marisa_eyes.png",TexMan.Type_Any);
+		if ( !logotex ) logotex = TexMan.CheckForTexture("graphics/MarisaLogo.png",TexMan.Type_Any);
+		if ( !gradtex ) gradtex = TexMan.CheckForTexture("graphics/title_grad.png",TexMan.Type_Any);
+		double GameSecs = (titletimer+e.FracTic)/GameTicRate;
+		if ( ash_fuzz )
+		{
+			if ( !bgtex ) bgtex = TexMan.CheckForTexture("graphics/tempbg.png",TexMan.Type_Any);
+			Vector2 tsize = TexMan.GetScaledSize(bgtex);
+			double zoom = max(ceil(Screen.GetWidth()/tsize.x),ceil(Screen.GetHeight()/tsize.y));
+			Vector2 vsize = (Screen.GetWidth(),Screen.GetHeight())/zoom;
+			Screen.DrawTexture(bgtex,false,(vsize.x-tsize.x)/2,(vsize.y-tsize.y)/2,DTA_VirtualWidthF,vsize.x,DTA_VirtualHeightF,vsize.y,DTA_KeepRatio,true,DTA_ColorOverlay,Color(128,0,0,0));
+			Screen.Dim(Color(8,8,8),1.-clamp((GameSecs-30),.1,1.),0,0,Screen.GetWidth(),Screen.GetHeight());
+		}
+		else Screen.Dim(Color(8,8,8),1.,0,0,Screen.GetWidth(),Screen.GetHeight());
+		double alf;
+		String str;
+		double texscl = Screen.GetHeight()/1300.;
+		double logoscl = Screen.GetHeight()/1600.;
+		// intro texts
+		if ( titletimer < (30*GameTicRate) )
+		{
+			Screen.DrawTexture(gradtex,false,0,Screen.GetHeight(),DTA_DestWidth,Screen.GetWidth(),DTA_DestHeight,1024*CleanYFac_1,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(0,0,0),DTA_TopOffset,256);
+			RenderSmokeLayer(e,GameSecs,true,.5);
+			alf = clamp(1.-(GameSecs/30.),0.,.8);
+			Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
+			alf = clamp((GameSecs-15.)/10.,0.,1.);
+			Screen.DrawTexture(marisatex[0],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
+			RenderSmokeLayer(e,GameSecs,false,1.);
+			alf = clamp(1.-((GameSecs-10.)/20.),.5,1.);
+			Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
+			Screen.DrawTexture(gradtex,false,0,Screen.GetHeight(),DTA_DestWidth,Screen.GetWidth(),DTA_DestHeight,512*CleanYFac_1,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(0,0,0),DTA_TopOffset,256,DTA_Alpha,.8);
+			if ( titletimer > (25*GameTicRate) )
+			{
+				alf = clamp((GameSecs-25.)/5.,0.,1.)**2.;
+				Screen.DrawTexture(marisatex[1],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alf);
+			}
+			alf = clamp(GameSecs-1,0.,1.);
+			alf *= 1.-clamp(GameSecs-6,0.,1.);
+			String str = StringTable.Localize("$ASH_TITLEPRESENTSA");
+			Screen.DrawText(smallfont,Font.CR_ICE,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2)-(smallfont.GetHeight()*CleanYFac),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			str = StringTable.Localize("$ASH_TITLEPRESENTSB");
+			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			alf = clamp(GameSecs-8,0.,1.);
+			alf *= 1.-clamp(GameSecs-13,0.,1.);
+			str = StringTable.Localize("$ASH_TITLEMODBYA");
+			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2)-(smallfont.GetHeight()*CleanYFac),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			str = StringTable.Localize("$ASH_TITLEMODBYB");
+			Screen.DrawText(smallfont,Font.CR_ICE,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			alf = clamp(GameSecs-15,0.,1.);
+			alf *= 1.-clamp(GameSecs-28,0.,1.);
+			str = StringTable.Localize("$ASH_TITLEINTROA");
+			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()-smallfont.GetHeight()*3*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			str = StringTable.Localize("$ASH_TITLEINTROB");
+			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()-smallfont.GetHeight()*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			str = StringTable.Localize("$ASH_TITLEINTROC");
+			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()+smallfont.GetHeight()*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+		}
+		// the logo and stuff
+		else
+		{
+			Screen.DrawTexture(gradtex,false,0,Screen.GetHeight(),DTA_DestWidth,Screen.GetWidth(),DTA_DestHeight,1024*CleanYFac_1,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(0,0,0),DTA_TopOffset,256);
+			RenderSmokeLayer(e,GameSecs,true,.5);
+			if ( titletimer < 34*GameTicRate )
+			{
+				alf = clamp((GameSecs-31.)/3.,0.,1.);
+				Screen.DrawTexture(marisatex[0],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
+				Screen.DrawTexture(marisatex[2],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
+			}
+			else Screen.DrawTexture(marisatex[2],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
+			RenderSmokeLayer(e,GameSecs,false,1.);
+			alf = clamp(1.-(GameSecs-30.)/2.,.0,.5);
+			Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
+			Screen.DrawTexture(gradtex,false,0,Screen.GetHeight(),DTA_DestWidth,Screen.GetWidth(),DTA_DestHeight,512*CleanYFac_1,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(0,0,0),DTA_TopOffset,256,DTA_Alpha,.8);
+			if ( titletimer < 34*GameTicRate )
+			{
+				alf = clamp((GameSecs-31.)/3.,0.,1.);
+				Screen.DrawTexture(marisatex[1],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,1.-alf);
+				Screen.DrawTexture(marisatex[3],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
+			}
+			else Screen.DrawTexture(marisatex[3],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
+			if ( bFadeFromBlack && (titletimer < 31*GameTicRate) )
+			{
+				alf = clamp(1.-(GameSecs-30.),.0,.5);
+				Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
+			}
+			Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-512*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl);
+		}
+	}
+}
+
+const LOGOFADERBASE = 60000.;
+
+Class LogoFader : Actor
+{
+	Actor base;
+	MarisaTitleStuff hnd;
+
+	Default
+	{
+		+NOGRAVITY;
+		+NOBLOCKMAP;
+		+NOINTERACTION;
+		+DONTSPLASH;
+		Radius .1;
+		Height 0;
+	}
+
+	override void PostBeginPlay()
+	{
+		SetOrigin((LOGOFADERBASE+32,LOGOFADERBASE,0),false);
+		SetZ(floorz);
+		roll = 180;
+		angle = 180;
+		double halfstretch = (1.+level.pixelstretch)/2.;
+		if ( !base ) base = Spawn("LogoFaderSurface",(LOGOFADERBASE,LOGOFADERBASE-32.,floorz+32.*halfstretch));
+	}
+	override void Tick()
+	{
+		double alf1 = clamp(((double(hnd.titletimer)/GameTicRate)-30.)*.25,0.,1.);
+		double alf2 = clamp(((double(hnd.titletimer)/GameTicRate)-30.5)*.5,0.,1.);
+		base.SetShade(Color(int(255*alf1),int(255*alf2),0));
+	}
+}
+
+Class LogoFaderSurface : Actor
+{
+	Default
+	{
+		Radius .1;
+		Height 0.;
+		RenderRadius 256;
+		+NOBLOCKMAP;
+		+NOGRAVITY;
+		+NOINTERACTION;
+		+DONTSPLASH;
+		+WALLSPRITE;
+		RenderStyle "Stencil";
+	}
+	override void Tick(){}
+	States
+	{
+	Spawn:
+		LGFD A -1 Bright;
+		Stop;
+	}
+}

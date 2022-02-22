@@ -1,0 +1,115 @@
+version "4.7.1"
+
+/*
+   CHILD OF ASH Main Codebase
+   (C)2022 Marisa Kirisame, UnSX Team
+   This copyright and the attached LICENSE.code file apply to all files
+   included from here, with the exception of any third-party libraries
+*/
+
+/// Demolitionist Common Library
+// library constants
+const SWWMMODPREFIX = "ash";
+const SWWMMAXBACKPACK = 0;
+const SWWMHEALTHFLASH = Color(64,96,255);
+const SWWMARMORFLASH = Color(255,224,64);
+const SWWMLOGONAME = "M_MARISA";
+const SWWMCREDITSCOL0 = Font.CR_ICE;
+const SWWMCREDITSCOL1 = Font.CR_WHITE;
+const SWWMCREDITSCOL2 = Font.CR_DARKGRAY;
+const SWWMMAXAMOUNT = 5;
+const SWWMMAXVIPAMOUNT = 3;
+// Gutamatics
+#include "zscript/swwm_Gutamatics/Include.zsc"
+// utility code
+#include "zscript/utility/swwm_coordutil.zsc"
+#include "zscript/utility/swwm_utility.zsc"
+// base code
+#include "zscript/swwm_common.zsc"
+#include "zscript/swwm_common_fx.zsc"
+#include "zscript/swwm_handler.zsc"
+#include "zscript/swwm_statichandler.zsc"
+#include "zscript/swwm_thinkers.zsc"
+#include "zscript/swwm_player.zsc"
+#include "zscript/swwm_blod.zsc"
+// handler code
+#include "zscript/handler/swwm_handler_damage.zsc"
+#include "zscript/handler/swwm_handler_flash.zsc"
+#include "zscript/handler/swwm_handler_iwantdie.zsc"
+#include "zscript/handler/swwm_handler_process.zsc"
+#include "zscript/handler/swwm_handler_queues.zsc"
+#include "zscript/handler/swwm_handler_replacements.zsc"
+#include "zscript/handler/swwm_handler_worldload.zsc"
+#include "zscript/handler/swwm_handler_worldthings.zsc"
+// menu code
+#include "zscript/menu/swwm_help.zsc"
+#include "zscript/menu/swwm_menus.zsc"
+#include "zscript/menu/swwm_credits.zsc"
+// compat code
+#include "zscript/compat/swwm_compat.zsc"
+#include "zscript/compat/swwm_shame.zsc"
+#include "zscript/compat/swwm_hdoom.zsc"
+// hud
+#include "zscript/hud/swwm_hud.zsc"
+#include "zscript/hud/swwm_hudextra.zsc"
+// items
+#include "zscript/items/swwm_baseitem.zsc"
+#include "zscript/items/swwm_basehealth.zsc"
+#include "zscript/items/swwm_basearmor.zsc"
+#include "zscript/items/swwm_baseammo.zsc"
+#include "zscript/items/swwm_keys.zsc"
+#include "zscript/items/swwm_angerysigil.zsc"
+#include "zscript/items/swwm_ebarrier.zsc"
+#include "zscript/items/swwm_omnisight.zsc"
+#include "zscript/items/swwm_safetytether.zsc"
+// weapons
+#include "zscript/weapons/swwm_baseweapon.zsc"
+#include "zscript/weapons/swwm_baseweapon_fx.zsc"
+#include "zscript/weapons/swwm_baseweapon_melee.zsc"
+// monsters
+#include "zscript/swwm_monsters.zsc"
+
+/// CHILD OF ASH Specific Code
+// utility code
+#include "zscript/utility/marisa_utility.zsc"
+// base code
+#include "zscript/marisa_player.zsc"
+#include "zscript/marisa_player_fx.zsc"
+// handler code
+#include "zscript/handler/marisa_handler_process.zsc"
+#include "zscript/handler/marisa_handler_shaders.zsc"
+#include "zscript/handler/marisa_handler_replacements.zsc"
+// menu code
+#include "zscript/menu/marisa_credits.zsc"
+#include "zscript/menu/marisa_title.zsc"
+// hud
+#include "zscript/hud/marisa_hud.zsc"
+// items
+#include "zscript/items/marisa_ammoitems.zsc"
+#include "zscript/items/marisa_ammospawn.zsc"
+#include "zscript/items/marisa_armor.zsc"
+#include "zscript/items/marisa_health.zsc"
+#include "zscript/items/marisa_powerups.zsc"
+// weapons
+#include "zscript/weapons/marisa_melee.zsc"
+#include "zscript/weapons/marisa_melee_fx.zsc"
+#include "zscript/weapons/marisa_cutter.zsc"
+#include "zscript/weapons/marisa_cutter_fx.zsc"
+#include "zscript/weapons/marisa_slayer.zsc"
+#include "zscript/weapons/marisa_slayer_fx.zsc"
+#include "zscript/weapons/marisa_planetoid.zsc"
+#include "zscript/weapons/marisa_planetoid_fx.zsc"
+#include "zscript/weapons/marisa_wrath.zsc"
+#include "zscript/weapons/marisa_wrath_fx.zsc"
+#include "zscript/weapons/marisa_chthon.zsc"
+#include "zscript/weapons/marisa_chthon_fx.zsc"
+#include "zscript/weapons/marisa_antares.zsc"
+#include "zscript/weapons/marisa_antares_fx.zsc"
+#include "zscript/weapons/marisa_abyss.zsc"
+#include "zscript/weapons/marisa_abyss_fx.zsc"
+#include "zscript/weapons/marisa_eruption.zsc"
+#include "zscript/weapons/marisa_eruption_fx.zsc"
+#include "zscript/weapons/marisa_redsun.zsc"
+#include "zscript/weapons/marisa_redsun_fx.zsc"
+#include "zscript/weapons/marisa_bomb.zsc"
+#include "zscript/weapons/marisa_bomb_fx.zsc"

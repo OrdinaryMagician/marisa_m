@@ -1,0 +1,3 @@
+$pitchshiftrange 0
+
+title/fadein	sounds/title_fadein.ogg

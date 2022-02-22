@@ -97,7 +97,7 @@ Class MarisaTitleStuff : EventHandler
 
 	override void UiTick()
 	{
-		if ( titletimer == 1 ) S_ChangeMusic("music/marisa_pretitle.ogg",looping:false);
+		if ( titletimer == 1 ) S_ChangeMusic("music/marisa_pretitlemus.ogg",looping:false);
 		else if ( titletimer == (31*GameTicRate) ) S_StartSound("title/fadein",CHAN_WEAPON,CHANF_OVERLAP|CHANF_UI,1.,0.);
 		else if ( titletimer == (32*GameTicRate) ) S_ChangeMusic("music/marisa_titlemus.ogg");
 		TickSmokeLayers();

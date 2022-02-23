@@ -66,7 +66,7 @@ A massive hammer crafted from a chunk of the **Ardakyr Asteroid** that collided 
 
 *"I will cherish this pistol. I like how my Cinnabun looks at me when I use it."*
 
-A very beefy handgun, generally only given to those who can manage to wield it. Takes four 23mm bullets into its magazine plus one in the chamber. It packs a considerable punch, unsurprisingly, and you can have two.
+A very beefy handgun, generally only given to those who can manage to wield it. Takes four 23mm bullets into its magazine. It packs a considerable punch, unsurprisingly, and you can have two.
 
 - **Primary fire:** Perform the shooting. 
 - **Secondary fire:** Shoots the off-hand gun, if you have one.

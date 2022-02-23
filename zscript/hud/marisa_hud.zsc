@@ -20,11 +20,6 @@ Class MarisaStatusBar : SWWMStatusBar
 		// when loading saves, too)
 		HealthInter.Reset(CPlayer.Health*10);
 		ManaInter.Reset(CPlayer.mo.CountInv("MarisaMana")*10);
-		for ( int i=0; i<8; i++ )
-		{
-			let amt = CPlayer.mo.CountInv(AmmoSlots[i]);
-			AmmoInter[i].Reset(amt);
-		}
 	}
 	override void UpdateInterpolators()
 	{
@@ -45,7 +40,7 @@ Class MarisaStatusBar : SWWMStatusBar
 			AmmoOldAmounts[i] = amt;
 		}
 		hp /= 10;
-		if ( hp <= 0 )
+		if ( (hp <= 0) || (hp > 25) )
 		{
 			PulsePhase = 0;
 			return;
@@ -276,6 +271,59 @@ Class MarisaStatusBar : SWWMStatusBar
 
 	override int DrawStatus()
 	{
-		return 25;
+		double xx = margin+28;
+		double yy = ss.y-(margin+10);
+		Screen.DrawTexture(StatusTex,false,xx,yy,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+		double ht = clamp(HealthInter.GetValue()/10.,0.,999.);
+		String str = String.Format("%3d",int(ht));
+		double hw = min(ht,100);
+		Screen.DrawTexture(BarTex[0],false,xx+3,yy+3,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_ColorOverlay,Color(255,0,0,0));
+		bool invul = isInvulnerable();
+		Screen.DrawTexture(BarTex[invul?4:0],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw);
+		Screen.DrawText(MiniHUDFont,mhudfontcol[invul?MCR_BRASS:MCR_CRIMSON],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+		if ( !invul )
+		{
+			if ( (ht > 0) && (ht <= 25) && (PulsePhase <= 15) )
+			{
+				double alph = clamp(sin((PulsePhase-FracTic)*12.),0.,1.);
+				Screen.DrawTexture(BarTex[5],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_Alpha,alph,DTA_LegacyRenderStyle,STYLE_Add);
+				Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_REDFLASH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_Alpha,alph,DTA_LegacyRenderStyle,STYLE_Add);
+			}
+			else if ( ht > 100 )
+			{
+				double alph = ((ht-100)/100.)**.5;
+				Screen.DrawTexture(BarTex[2],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_Alpha,alph);
+				Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_BRASS],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_Alpha,alph);
+			}
+		}
+		int f = HealthFlash;
+		if ( f && (gametic < f) )
+		{
+			double alph = ((f-(gametic+FracTic))/25.)**1.5;
+			Screen.DrawTexture(BarTex[6],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
+			Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_FLASH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
+		}
+		yy -= 14;
+		Screen.DrawTexture(StatusTex,false,xx,yy,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+		double mt = clamp(ManaInter.GetValue()/10.,0.,999.);
+		str = String.Format("%3d",int(mt));
+		double mw = min(mt,100);
+		Screen.DrawTexture(BarTex[1],false,xx+3,yy+3,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,mw,DTA_ColorOverlay,Color(255,0,0,0));
+		Screen.DrawTexture(BarTex[1],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,mw);
+		Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_MANA],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+		if ( mt > 100 )
+		{
+			double alph = ((mt-100)/100.)**.5;
+			Screen.DrawTexture(BarTex[3],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,mw,DTA_Alpha,alph);
+			Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_ELDRITCH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_Alpha,alph);
+		}
+		f = ManaFlash;
+		if ( f && (gametic < f) )
+		{
+			double alph = ((f-(gametic+FracTic))/25.)**1.5;
+			Screen.DrawTexture(BarTex[6],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,mw,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
+			Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_FLASH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
+		}
+		return 22;
 	}
 }

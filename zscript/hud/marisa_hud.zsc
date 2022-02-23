@@ -16,8 +16,15 @@ Class MarisaStatusBar : SWWMStatusBar
 	override void FlushNotify()
 	{
 		Super.FlushNotify();
+		// flush interpolators (useful since this virtual gets called
+		// when loading saves, too)
 		HealthInter.Reset(CPlayer.Health*10);
 		ManaInter.Reset(CPlayer.mo.CountInv("MarisaMana")*10);
+		for ( int i=0; i<8; i++ )
+		{
+			let amt = CPlayer.mo.CountInv(AmmoSlots[i]);
+			AmmoInter[i].Reset(amt);
+		}
 	}
 	override void UpdateInterpolators()
 	{
@@ -25,6 +32,9 @@ Class MarisaStatusBar : SWWMStatusBar
 		int mp = CPlayer.mo.CountInv("MarisaMana")*10;
 		HealthInter.Update(hp);
 		ManaInter.Update(mp);
+		// flash 'em
+		if ( hp > LastHealth ) HealthFlash = gametic+25;
+		if ( mp > LastMana ) ManaFlash = gametic+25;
 		LastHealth = hp;
 		LastMana = mp;
 		for ( int i=0; i<4; i++ )

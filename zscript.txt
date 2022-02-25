@@ -45,6 +45,7 @@ const SWWMMAXVIPAMOUNT = 3;
 #include "zscript/menu/swwm_help.zsc"
 #include "zscript/menu/swwm_menus.zsc"
 #include "zscript/menu/swwm_credits.zsc"
+#include "zscript/menu/swwm_inter.zsc"
 // compat code
 #include "zscript/compat/swwm_compat.zsc"
 #include "zscript/compat/swwm_shame.zsc"
@@ -81,6 +82,7 @@ const SWWMMAXVIPAMOUNT = 3;
 #include "zscript/handler/marisa_handler_replacements.zsc"
 // menu code
 #include "zscript/menu/marisa_credits.zsc"
+#include "zscript/menu/marisa_inter.zsc"
 #include "zscript/menu/marisa_title.zsc"
 // hud
 #include "zscript/hud/marisa_hud.zsc"

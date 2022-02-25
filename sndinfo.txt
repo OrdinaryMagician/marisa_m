@@ -1,3 +1,11 @@
 $pitchshiftrange 0
 
 title/fadein	sounds/title_fadein.ogg
+
+wrath/fire1	sounds/wrath/wrath_fire1.ogg
+wrath/fire2	sounds/wrath/wrath_fire2.ogg
+wrath/fire3	sounds/wrath/wrath_fire3.ogg
+$random wrath/fire { wrath/fire1 wrath/fire2 wrath/fire3 }
+
+$alias misc/interstart wrath/fire
+$alias misc/interdone misc/w_pkup_vip // temporary

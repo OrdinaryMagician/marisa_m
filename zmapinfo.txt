@@ -3,6 +3,7 @@ GameInfo
 	AddEventHandlers = "SWWMStaticHandler", "SWWMHandler", "SWWMBrutalHandler", "SWWMHDoomHandler"
 	PlayerClasses = "MarisaPlayer"
 	StatusBarClass = "MarisaStatusBar"
+	StatScreen_Single = "MarisaStatScreen"
 	QuitSound = "misc/teleport"
 	QuitMessages = "$QUITMSG", "$QUITMSG1", "$QUITMSG2", "$QUITMSG3",
 		"$QUITMSG4", "$QUITMSG5", "$QUITMSG6", "$QUITMSG7",

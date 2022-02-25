@@ -191,7 +191,7 @@ Class MarisaStatusBar : SWWMStatusBar
 			int f = hnd.WeaponFlash[i%10];
 			if ( f && (gametic < f) )
 			{
-				double alph = ((f-(gametic+FracTic))/25.)**1.5;
+				double alph = max((f-(gametic+FracTic))/25.,0.)**1.5;
 				Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_FLASH],xx,yy,String.Format("%d",(i%10)),DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_Alpha,alph,DTA_LegacyRenderStyle,STYLE_Add);
 			}
 		}
@@ -250,7 +250,7 @@ Class MarisaStatusBar : SWWMStatusBar
 			let f = AmmoFlash[i];
 			if ( f && (gametic < f) )
 			{
-				double alph = ((f-(gametic+FracTic))/25.)**1.5;
+				double alph = max((f-(gametic+FracTic))/25.,0.)**1.5;
 				str = String.Format("%3d",clamp(amt,0,999));
 				Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_FLASH],xx+20,yy,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_Alpha,alph,DTA_LegacyRenderStyle,STYLE_Add);
 			}
@@ -273,7 +273,7 @@ Class MarisaStatusBar : SWWMStatusBar
 		{
 			if ( ht > 100 )
 			{
-				double alph = ((ht-100)/100.)**.5;
+				double alph = max((ht-100)/100.,0.)**.5;
 				Screen.DrawTexture(BarTex[2],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_Alpha,alph);
 				Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_BRASS],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_Alpha,alph);
 			}
@@ -287,7 +287,7 @@ Class MarisaStatusBar : SWWMStatusBar
 		int f = HealthFlash;
 		if ( f && (gametic < f) )
 		{
-			double alph = ((f-(gametic+FracTic))/25.)**1.5;
+			double alph = max((f-(gametic+FracTic))/25.,0.)**1.5;
 			Screen.DrawTexture(BarTex[6],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
 			Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_FLASH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
 		}
@@ -301,14 +301,14 @@ Class MarisaStatusBar : SWWMStatusBar
 		Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_MANA],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 		if ( mt > 100 )
 		{
-			double alph = ((mt-100)/100.)**.5;
+			double alph = max((mt-100)/100.,0.)**.5;
 			Screen.DrawTexture(BarTex[3],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,mw,DTA_Alpha,alph);
 			Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_ELDRITCH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_Alpha,alph);
 		}
 		f = ManaFlash;
 		if ( f && (gametic < f) )
 		{
-			double alph = ((f-(gametic+FracTic))/25.)**1.5;
+			double alph = max((f-(gametic+FracTic))/25.,0.)**1.5;
 			Screen.DrawTexture(BarTex[6],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,mw,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
 			Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_FLASH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
 		}

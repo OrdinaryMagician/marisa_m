@@ -129,7 +129,6 @@ Class MarisaTitleStuff : EventHandler
 		}
 		if ( back ) return;
 		base = 600;
-		double GameSecs = (titletimer+e.FracTic)/GameTicRate;
 		for ( int i=0; i<128; i++ )
 		{
 			if ( !ash[i].maxage ) continue;

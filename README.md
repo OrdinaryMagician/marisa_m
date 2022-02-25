@@ -66,10 +66,10 @@ A massive hammer crafted from a chunk of the **Ardakyr Asteroid** that collided 
 
 *"I will cherish this pistol. I like how my Cinnabun looks at me when I use it."*
 
-A very beefy handgun, generally only given to those who can manage to wield it. Takes four 23mm bullets into its magazine. It packs a considerable punch, unsurprisingly, and you can have two.
+A very beefy handgun, generally only given to those who can manage to wield it. Takes four 23mm bullets into its magazine. It packs a considerable punch, unsurprisingly.
 
 - **Primary fire:** Perform the shooting.
-- **Secondary fire:** Shoots the off-hand gun, if you have one.
+- **Secondary fire:** Spares some mana to enhance the loaded bullets, making them even more destructive.
 - **Reload:** Reloads the gun.
 
 ### 23mm HEI Bullets *[Bullets, Wand Crystals, Claw Orbs, Flechette]*
@@ -80,10 +80,10 @@ Big bullets for a big gun, which burst into scalding fragments on impact. Found 
 
 *"A thundering noise, and then silence."*
 
-This custom-crafted variant of a popular **Siesta Arms** lever-action shotgun is designed specifically to handle pyromantic shells and become a ludicrous force of destruction. And guess what? It can be dual wielded too.
+This custom-crafted variant of a popular **Siesta Arms** lever-action shotgun is designed specifically to handle pyromantic shells and become a ludicrous force of destruction.
 
 - **Primary fire:** Just do the shoots.
-- **Secondary fire:** Do the off-hand shoots, if any.
+- **Secondary fire:** You can enhance these shells too, and boy does that have some impressive results.
 - **Reload:** Puts in more shells. Up to 5 fit in the mag, plus one in the chamber and an extra in the receiver.
 
 ### 20mm Frag-C Shells *[Shells, Ethereal Arrows, Blue Mana]*
@@ -97,7 +97,7 @@ Somewhat sizable shotgun shells. You'll find 'em in bunches, or boxes. **Frag-C*
 This large weapon is designed for burning through thick armor and hitting anything hiding on the other side. Capable of melting holes through most metals, as well as dense stone, nothing can truly stop the advance of this thing. Naturally, **Marisa** wanted to get her hands on one of these, as the prospect of raining down a stream of pure incandescent destruction on monsters sounds just absolutely awesome.
 
 - **Primary fire:** Steady stream of piercing plasma.
-- **Secondary fire:** Overdrive mode, causes the beam to burn harder and go deeper, but needs at least one full cell pack.
+- **Secondary fire:** Overdrive mode, injects mana to cause the beam to burn harder and go deeper, while consuming ammo faster.
 - **Reload:** Does what you'd expect. The weapon can feed from two individual cell packs, for 2x10 shots. Note that for safety reasons, an unsealed cell pack can't be removed from the weapon until fully depleted.
 
 ### Antaresian Cells *[Cells, Runes, Green Mana]*

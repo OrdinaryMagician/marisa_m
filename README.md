@@ -16,9 +16,7 @@ Anyway, you may be wondering where this character even comes from. Well, she's b
 
 OK, enough sidetracking, let's focus on the stuff™. As any typical **Anarukon** warrior, you've got access to a dedicated *"bag of holding"* where you can fit all your items and weapons that aren't in use. There's a total of six weapons *(plus melee)* that you can bring with yourself, and three always-available spells that you can cycle from and cast at will, with any weapon active.
 
-**Marisa** isn't very fast, not very mobile, but she can speed up at the cost of not being able to shoot and run simultaneously. She compensates for this slowness by being basically a *"mighty glacier"*. Her damage resistances are something to behold, and there's additionally the fact that her weapons tend to be very... Massive.
-
-**Marisa** can swim with ease, even while wielding massive weapons, so you don't need to worry about sinking. She of course also has methods for breathing underwater *(as does her boyfriend, again, more on that later)*.
+**Marisa** isn't very fast, not very mobile, but she compensates for this by being basically a *"mighty glacier"*. Her damage resistances are something to behold, and there's additionally the fact that her weapons tend to be very... Massive. She can also swim with ease, even while wielding massive weapons, so you don't need to worry about sinking, and of course, she also has methods for breathing underwater *(as does her boyfriend, again, more on that later)*.
 
 ---
 

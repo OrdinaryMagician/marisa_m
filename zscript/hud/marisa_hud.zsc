@@ -265,7 +265,7 @@ Class MarisaStatusBar : SWWMStatusBar
 	override int DrawStatus()
 	{
 		double xx = margin+28;
-		double yy = ss.y-(margin+10);
+		double yy = ss.y-(margin+24);
 		Screen.DrawTexture(StatusTex,false,xx,yy,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 		double ht = clamp(HealthInter.GetValue()/10.,0.,999.);
 		String str = String.Format("%3d",int(ht));
@@ -299,7 +299,7 @@ Class MarisaStatusBar : SWWMStatusBar
 		double tht = clamp(ThinHealthInter.GetValue()/10.,0.,100.);
 		if ( tht < 100. )
 			Screen.DrawTexture(BarTex[7],false,xx+2+tht,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,100.-tht);
-		yy -= 14;
+		yy += 14;
 		Screen.DrawTexture(StatusTex,false,xx,yy,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 		double mt = clamp(ManaInter.GetValue()/10.,0.,999.);
 		str = String.Format("%3d",int(mt));

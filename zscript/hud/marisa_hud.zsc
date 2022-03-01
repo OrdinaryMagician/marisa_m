@@ -298,7 +298,10 @@ Class MarisaStatusBar : SWWMStatusBar
 		}
 		double tht = clamp(ThinHealthInter.GetValue()/10.,0.,100.);
 		if ( tht < 100. )
+		{
+			Screen.DrawTexture(BarTex[0],false,xx+3+tht,yy+3,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,100.-tht,DTA_ColorOverlay,Color(255,0,0,0));
 			Screen.DrawTexture(BarTex[7],false,xx+2+tht,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,100.-tht);
+		}
 		yy += 14;
 		Screen.DrawTexture(StatusTex,false,xx,yy,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 		double mt = clamp(ManaInter.GetValue()/10.,0.,999.);

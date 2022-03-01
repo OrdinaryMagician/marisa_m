@@ -1,5 +1,14 @@
 [es]
 // keybinds
+ASH_KEYS = "Teclas de CHILD OF ASH";
+ASH_PRIMARYFIRE = "Fuego Primario";
+ASH_SECONDARYFIRE = "Fuego Secundario";
+ASH_RELOADFIRE = "Recarga";
+ASH_MELEE = "Patada Rápida";
+ASH_SPELLCAST = "Invocar Hechizo";
+ASH_EXTRAFIRE = "Granada";
+ASH_SPELLPREV = "Hechizo Anterior";
+ASH_SPELLNEXT = "Hechizo Siguiente";
 // skills
 ASH_SKCHILL="\cvEspíritu Dócil\c-";
 ASH_SKEASY="\cdEspíritu Alegre\c-";
@@ -13,3 +22,9 @@ ASH_SKLUNATICCONFIRM="\cmCiertamente deseas morir.\nElige esta dificultad si te 
 ASH_MTITLE = "Opciones de CHILD OF ASH";
 ASH_MCREDS = "Créditos de CHILD OF ASH";
 // Help menu
+ASH_HELP_PAGE1 = "La Historia Hasta Ahora";
+ASH_HELP_PAGE2 = "Quien Es Marisa Azanth";
+ASH_HELP_PAGE3 = "Arsenal de Marisa (Parte 1: Armas)";
+ASH_HELP_PAGE4 = "Arsenal de Marisa (Parte 2: Ítems)";
+ASH_HELP_PAGE5 = "Arsenal de Marisa (Parte 3: Potenciadores)";
+ASH_HELP_PAGE6 = "Consejos Adicionales";

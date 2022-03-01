@@ -1,0 +1,89 @@
+// internal armor that handles built-in resistances
+Class MarisaInternalArmor : SWWMArmor
+{
+	Default
+	{
+		Inventory.Amount 1;
+		Inventory.MaxAmount 1;
+		Inventory.InterHubAmount 1;
+		SWWMArmor.ArmorPriority 2;
+		+INVENTORY.UNCLEARABLE;
+		+SWWMARMOR.NOHITFLASH;
+		+SWWMARMOR.NOHITSOUND;
+		+SWWMARMOR.NODRAIN;
+	}
+
+	override bool HandlePickup( Inventory item )
+	{
+		// disallow vanilla armors
+		if ( (item is 'BasicArmor') || (item is 'BasicArmorBonus') || (item is 'BasicArmorPickup') || (item is 'HexenArmor') )
+		{
+			item.bPickupGood = true;	// but act as if we picked them up
+			return true;
+		}
+		return false;
+	}
+
+	override int HandleDamage( int damage, Name damageType, int flags )
+	{
+		double dr = 0.;
+		int dt = 0;
+		switch ( damageType )
+		{
+		case 'Fire':
+		case 'Lava':
+		case 'Magma':
+		case 'Heat':
+		case 'Thermal':
+			dr = .8;
+			dt = 6;
+			break;
+		case 'Ice':
+		case 'Cold':
+			dr = .5;
+			dt = 3;
+			break;
+		case 'Poison':
+		case 'PoisonCloud':
+			dr = .4;
+			dt = 3;
+			break;
+		case 'Toxic':
+		case 'Toxin':
+			dr = .3;
+			dt = 2;
+			break;
+		case 'Slime':
+		case 'Acid':
+			dr = .5;
+			dt = 3;
+			break;
+		case 'Lightning':
+		case 'Electricity':
+		case 'Electric':
+		case 'Plasma':
+		case 'Chaos':
+			dr = .7;
+			dt = 5;
+			break;
+		case 'Bullet':
+		case 'Hitscan':
+		case 'Shot':
+			dr = .4;
+			dt = 2;
+			break;
+		case 'Melee':
+			dr = .7;
+			dt = 5;
+			break;
+		default:
+			dr = .6;
+			dt = 4;
+			break;
+		}
+		// 50% general splash reduction
+		if ( flags&DMG_EXPLOSION )
+			dr = (1.+dr)/2.;
+		return clamp(int(damage*dr)+dt,0,damage);
+	}
+}

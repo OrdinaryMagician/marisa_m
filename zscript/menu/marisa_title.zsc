@@ -155,7 +155,7 @@ Class MarisaTitleStuff : EventHandler
 		if ( !logotex ) logotex = TexMan.CheckForTexture("graphics/MarisaLogo.png",TexMan.Type_Any);
 		if ( !gradtex ) gradtex = TexMan.CheckForTexture("graphics/title_grad.png",TexMan.Type_Any);
 		double GameSecs = (titletimer+e.FracTic)/GameTicRate;
-		if ( ash_fuzz )
+		if ( swwm_fuzz )
 		{
 			if ( !bgtex ) bgtex = TexMan.CheckForTexture("graphics/tempbg.png",TexMan.Type_Any);
 			Vector2 tsize = TexMan.GetScaledSize(bgtex);

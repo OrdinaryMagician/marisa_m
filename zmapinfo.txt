@@ -20,7 +20,7 @@ GameInfo
 	MenuFontColor_Label = "DarkGray"
 	MenuFontColor_Value = "Black"
 	MenuFontColor_Action = "DarkGray"
-	MenuFontColor_Header = "Black"
+	MenuFontColor_Header = "Ice"
 	MenuFontColor_Highlight = "White"
 	MenuFontColor_Selection = "White"
 	MenuSliderColor = "DarkGray"

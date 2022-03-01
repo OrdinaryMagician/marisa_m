@@ -28,11 +28,28 @@ Class MarisaPlayer : SWWMPlayer
 		+SWWMPLAYER.CANDODGE;
 	}
 
+	override void Die( Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath )
+	{
+		Super.Die(source,inflictor,dmgflags,MeansOfDeath);
+		MaxHealth = StartHealth = max(50,SpawnHealth()-10);
+	}
+
 	override Weapon PickWeapon( int slot, bool checkammo )
 	{
 		if ( (slot >= 8) && (slot <= 9) ) EventHandler.SendNetworkEvent("marisaspellslot",slot-8);
 		else if ( slot == 0 ) EventHandler.SendNetworkEvent("marisaspellslot",2);
 		else return Super.PickWeapon(slot,checkammo);
 		return player.ReadyWeapon;
+	}
+}
+
+// event handler hook needed because player_t::Resurrect() does not respect SpawnHealth
+extend Class SWWMHandler
+{
+	override void PlayerRespawned( PlayerEvent e )
+	{
+		PlayerInfo p = players[e.PlayerNumber];
+		if ( p.mo && (p.mo is 'MarisaPlayer') )
+			p.Health = p.mo.Health = p.mo.SpawnHealth();
 	}
 }

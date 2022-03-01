@@ -96,3 +96,10 @@ HardwareShader Texture "graphics/MarisaLogo.png"
 	Texture "Layer2" "graphics/MarisaLogo_Layer2.png"
 	Texture "fadetex" "LOGOFADE"
 }
+HardwareShader Texture "graphics/HUD/HealthBarInvul.png"
+{
+	Shader "shaders/glsl/Fuzz.fp"
+	Texture "noisetex" "textures/graynoise.png"
+	Define "GRAY_COLORS"
+	Define "BASE_RES" = "vec2(100.,5.)"
+}

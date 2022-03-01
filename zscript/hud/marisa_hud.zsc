@@ -2,7 +2,7 @@
 
 Class MarisaStatusBar : SWWMStatusBar
 {
-	TextureID StatusTex, AmmoTex, WeaponTex, BarTex[7], GenTex[3];
+	TextureID StatusTex, AmmoTex, WeaponTex, BarTex[8], GenTex[3];
 	int AmmoFlash[4];		// flash when new ammo is received
 	int AmmoOldAmounts[4];		// to detect when to flash
 	Class<SWWMAmmo> AmmoSlots[4];	// ammo type on each slot
@@ -10,7 +10,7 @@ Class MarisaStatusBar : SWWMStatusBar
 	int HealthFlash, ManaFlash;	// flash when healing or gaining mana
 	int LastHealth, LastMana;	// to detect when to flash
 
-	DynamicValueInterpolator HealthInter, ManaInter;
+	DynamicValueInterpolator HealthInter, ThinHealthInter, ManaInter;
 
 	override void FlushNotify()
 	{
@@ -18,13 +18,16 @@ Class MarisaStatusBar : SWWMStatusBar
 		// flush interpolators (useful since this virtual gets called
 		// when loading saves, too)
 		HealthInter.Reset(CPlayer.Health*10);
+		ThinHealthInter.Reset(CPlayer.mo.SpawnHealth()*10);
 		ManaInter.Reset(CPlayer.mo.CountInv("MarisaMana")*10);
 	}
 	override void UpdateInterpolators()
 	{
 		int hp = CPlayer.Health*10;
+		int thp = CPlayer.mo.SpawnHealth()*10;
 		int mp = CPlayer.mo.CountInv("MarisaMana")*10;
 		HealthInter.Update(hp);
+		ThinHealthInter.Update(thp);
 		ManaInter.Update(mp);
 		// flash 'em
 		if ( hp > LastHealth ) HealthFlash = gametic+25;
@@ -61,6 +64,7 @@ Class MarisaStatusBar : SWWMStatusBar
 		BarTex[4] = TexMan.CheckForTexture("graphics/HUD/HealthBarInvul.png",TexMan.Type_Any);
 		BarTex[5] = TexMan.CheckForTexture("graphics/HUD/HealthBarPulse.png",TexMan.Type_Any);
 		BarTex[6] = TexMan.CheckForTexture("graphics/HUD/BarFlash.png",TexMan.Type_Any);
+		BarTex[7] = TexMan.CheckForTexture("graphics/HUD/HealthBarThin.png",TexMan.Type_Any);
 		GenTex[0] = TexMan.CheckForTexture("graphics/HUD/GenericAmmoBoxL.png",TexMan.Type_Any);
 		GenTex[1] = TexMan.CheckForTexture("graphics/HUD/GenericAmmoBoxM.png",TexMan.Type_Any);
 		GenTex[2] = TexMan.CheckForTexture("graphics/HUD/GenericAmmoBoxR.png",TexMan.Type_Any);
@@ -74,6 +78,7 @@ Class MarisaStatusBar : SWWMStatusBar
 		LastMana = (CPlayer&&CPlayer.mo)?(CPlayer.mo.CountInv("MarisaMana")*10):0;
 		LastHealth = CPlayer?(CPlayer.health*10):1000;
 		HealthInter = DynamicValueInterpolator.Create(0,.1,1,100);
+		ThinHealthInter = DynamicValueInterpolator.Create(100,.1,1,100);
 		ManaInter = DynamicValueInterpolator.Create(0,.1,1,100);
 		AmmoSlots[0] = "MarisaPistolAmmo";
 		AmmoSlots[1] = "MarisaShotgunAmmo";
@@ -268,7 +273,7 @@ Class MarisaStatusBar : SWWMStatusBar
 		Screen.DrawTexture(BarTex[0],false,xx+3,yy+3,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_ColorOverlay,Color(255,0,0,0));
 		bool invul = isInvulnerable();
 		Screen.DrawTexture(BarTex[invul?4:0],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw);
-		Screen.DrawText(MiniHUDFont,mhudfontcol[invul?MCR_BRASS:MCR_CRIMSON],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+		Screen.DrawText(MiniHUDFont,mhudfontcol[invul?MCR_WHITE:MCR_CRIMSON],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 		if ( !invul )
 		{
 			if ( ht > 100 )
@@ -291,6 +296,9 @@ Class MarisaStatusBar : SWWMStatusBar
 			Screen.DrawTexture(BarTex[6],false,xx+2,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,hw,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
 			Screen.DrawText(MiniHUDFont,mhudfontcol[MCR_FLASH],xx+107,yy+2,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alph);
 		}
+		double tht = clamp(ThinHealthInter.GetValue()/10.,0.,100.);
+		if ( tht < 100. )
+			Screen.DrawTexture(BarTex[7],false,xx+2+tht,yy+2,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true,DTA_WindowRightF,100.-tht);
 		yy -= 14;
 		Screen.DrawTexture(StatusTex,false,xx,yy,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 		double mt = clamp(ManaInter.GetValue()/10.,0.,999.);

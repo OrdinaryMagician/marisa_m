@@ -26,7 +26,6 @@ Class MarisaPlayer : SWWMPlayer
 		SWWMPlayer.MinCrouch .45;	// ensure same crouching height as a 56 unit tall player
 		SWWMPlayer.ResurrectType RT_RESPAWN;
 		+SWWMPLAYER.CANDODGE;
-		+SWWMPLAYER.CANLONGJUMP;
 	}
 
 	override Weapon PickWeapon( int slot, bool checkammo )

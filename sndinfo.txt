@@ -1,5 +1,130 @@
 $pitchshiftrange 0
 
+marisa/death		sounds/marisa/marisa_death.ogg
+marisa/hipain1		sounds/marisa/marisa_hipain1.ogg
+marisa/hipain2		sounds/marisa/marisa_hipain2.ogg
+marisa/pain1		sounds/marisa/marisa_pain1.ogg
+marisa/pain2		sounds/marisa/marisa_pain2.ogg
+marisa/lopain1		sounds/marisa/marisa_lopain1.ogg
+marisa/lopain2		sounds/marisa/marisa_lopain2.ogg
+marisa/grunt1		sounds/marisa/marisa_grunt1.ogg
+marisa/grunt2		sounds/marisa/marisa_grunt2.ogg
+marisa/puzzfail1	sounds/marisa/marisa_puzzfail1.ogg
+marisa/puzzfail2	sounds/marisa/marisa_puzzfail2.ogg
+marisa/puzzfail3	sounds/marisa/marisa_puzzfail3.ogg
+marisa/puzzfail4	sounds/marisa/marisa_puzzfail4.ogg
+marisa/accept		sounds/marisa/marisa_yes.ogg
+marisa/refuse		sounds/marisa/marisa_no.ogg
+marisa/thank		sounds/marisa/marisa_thank.ogg
+marisa/greet		sounds/marisa/marisa_greet.ogg
+marisa/dismiss1		sounds/marisa/marisa_dismiss1.ogg
+marisa/dismiss2		sounds/marisa/marisa_dismiss2.ogg
+marisa/dismiss3		sounds/marisa/marisa_dismiss3.ogg
+marisa/giggle1		sounds/marisa/marisa_giggle1.ogg
+marisa/giggle2		sounds/marisa/marisa_giggle2.ogg
+marisa/love1		sounds/marisa/marisa_love1.ogg
+marisa/love2		sounds/marisa/marisa_love2.ogg
+marisa/love3		sounds/marisa/marisa_love3.ogg
+marisa/oopsie		sounds/marisa/marisa_oopsie.ogg
+marisa/jump1		sounds/marisa/marisa_jump1.ogg
+marisa/jump2		sounds/marisa/marisa_jump2.ogg
+marisa/land1		sounds/marisa/marisa_land1.ogg
+marisa/land2		sounds/marisa/marisa_land2.ogg
+marisa/run1		sounds/marisa/marisa_run1.ogg
+marisa/run2		sounds/marisa/marisa_run2.ogg
+marisa/run3		sounds/marisa/marisa_run3.ogg
+marisa/run4		sounds/marisa/marisa_run4.ogg
+marisa/run5		sounds/marisa/marisa_run5.ogg
+marisa/run6		sounds/marisa/marisa_run6.ogg
+marisa/walk1		sounds/marisa/marisa_walk1.ogg
+marisa/walk2		sounds/marisa/marisa_walk2.ogg
+marisa/walk3		sounds/marisa/marisa_walk3.ogg
+marisa/walk4		sounds/marisa/marisa_walk4.ogg
+marisa/walk5		sounds/marisa/marisa_walk5.ogg
+marisa/walk6		sounds/marisa/marisa_walk6.ogg
+$random marisa/hipain { marisa/hipain1 marisa/hipain2 }
+$random marisa/pain { marisa/pain1 marisa/pain2 }
+$random marisa/lopain { marisa/lopain1 marisa/lopain2 }
+$random marisa/grunt { marisa/grunt1 marisa/grunt2 }
+$random marisa/puzzfail { marisa/puzzfail1 marisa/puzzfail2 marisa/puzzfail3 marisa/puzzfail4 }
+$random marisa/dismiss { marisa/dismiss1 marisa/dismiss2 marisa/dismiss3 }
+$random marisa/giggle { marisa/giggle1 marisa/giggle2 }
+$random marisa/love { marisa/love1 marisa/love2 marisa/love3 }
+$random marisa/jump { marisa/jump1 marisa/jump2 }
+$random marisa/land { marisa/land1 marisa/land2 }
+$random marisa/run { marisa/run1 marisa/run2 marisa/run3 marisa/run4 marisa/run5 marisa/run6 }
+$random marisa/walk { marisa/walk1 marisa/walk2 marisa/walk3 marisa/walk4 marisa/walk5 marisa/walk6 }
+
+$playeralias marisa neutral *death		marisa/death
+$playeralias marisa neutral *xdeath		marisa/death
+$playeralias marisa neutral *wimpydeath		marisa/death
+$playeralias marisa neutral *crazydeath		marisa/death
+$playeralias marisa neutral *burndeath		marisa/death
+$playeralias marisa neutral *gibbed		marisa/death
+$playeralias marisa neutral *splat		marisa/death
+$playeralias marisa neutral *pain100		marisa/lopain
+$playeralias marisa neutral *pain75		marisa/pain
+$playeralias marisa neutral *pain50		marisa/hipain
+$playeralias marisa neutral *pain25		marisa/hipain
+$playeralias marisa neutral *grunt		marisa/grunt
+$playeralias marisa neutral *land		marisa/land
+$playersound marisa neutral *falling		DSEMPTY
+$playeralias marisa neutral *jump		marisa/jump
+$playersound marisa neutral *fist		DSEMPTY
+$playersound marisa neutral *fistgrunt		DSEMPTY
+$playeralias marisa neutral *usefail		marisa/grunt
+$playersound marisa neutral *evillaugh		DSEMPTY
+$playeralias marisa neutral *weaponlaugh	marisa/giggle
+$playeralias marisa neutral *puzzfail		marisa/puzzfail
+$playersound marisa neutral *poison		DSEMPTY
+$playersound marisa neutral *dive		DSEMPTY
+$playersound marisa neutral *surface		DSEMPTY
+$playersound marisa neutral *gasp		DSEMPTY
+$playersound marisa neutral *taunt		DSEMPTY
+$playersound marisa neutral *regenerate		DSEMPTY
+$playersound marisa neutral *drainhealth	DSEMPTY
+
+cinnamon/death1		sounds/cinnamom/cinnabun_death1.ogg
+cinnamon/death2		sounds/cinnamom/cinnabun_death2.ogg
+cinnamon/grunt1		sounds/cinnamom/cinnabun_grunt1.ogg
+cinnamon/grunt2		sounds/cinnamom/cinnabun_grunt2.ogg
+cinnamon/hipain1	sounds/cinnamom/cinnabun_hipain1.ogg
+cinnamon/hipain2	sounds/cinnamom/cinnabun_hipain2.ogg
+cinnamon/pain1		sounds/cinnamom/cinnabun_pain1.ogg
+cinnamon/pain2		sounds/cinnamom/cinnabun_pain2.ogg
+cinnamon/lopain1	sounds/cinnamom/cinnabun_lopain1.ogg
+cinnamon/lopain2	sounds/cinnamom/cinnabun_lopain2.ogg
+cinnamon/jump1		sounds/cinnamon/cinnabun_jump1.ogg
+cinnamon/jump2		sounds/cinnamon/cinnabun_jump2.ogg
+cinnamon/land1		sounds/cinnamon/cinnabun_land1.ogg
+cinnamon/land2		sounds/cinnamon/cinnabun_land2.ogg
+cinnamon/run1		sounds/cinnamon/cinnabun_run1.ogg
+cinnamon/run2		sounds/cinnamon/cinnabun_run2.ogg
+cinnamon/run3		sounds/cinnamon/cinnabun_run3.ogg
+cinnamon/run4		sounds/cinnamon/cinnabun_run4.ogg
+cinnamon/walk1		sounds/cinnamon/cinnabun_walk1.ogg
+cinnamon/walk2		sounds/cinnamon/cinnabun_walk2.ogg
+cinnamon/walk3		sounds/cinnamon/cinnabun_walk3.ogg
+cinnamon/walk4		sounds/cinnamon/cinnabun_walk4.ogg
+$random cinnamon/death { cinnamon/death1 cinnamon/death2 }
+$random cinnamon/grunt { cinnamon/grunt1 cinnamon/grunt2 }
+$random cinnamon/hipain { cinnamon/hipain1 cinnamon/hipain2 }
+$random cinnamon/pain { cinnamon/pain1 cinnamon/pain2 }
+$random cinnamon/lopain { cinnamon/lopain1 cinnamon/lopain2 }
+$random cinnamon/jump { cinnamon/jump1 cinnamon/jump2 }
+$random cinnamon/land { cinnamon/land1 cinnamon/land2 }
+$random cinnamon/run { cinnamon/run1 cinnamon/run2 cinnamon/run3 cinnamon/run4 }
+$random cinnamon/walk { cinnamon/walk1 cinnamon/walk2 cinnamon/walk3 cinnamon/walk4 }
+
+gunlance/fire	sounds/cinnamom/cinnabun_gunlance_fire.ogg
+gunlance/swing1	sounds/cinnamom/cinnabun_gunlance_swing1.ogg
+gunlance/swing2	sounds/cinnamom/cinnabun_gunlance_swing2.ogg
+gunlance/hit1	sounds/cinnamom/cinnabun_gunlance_hit1.ogg
+gunlance/hit2	sounds/cinnamom/cinnabun_gunlance_hit2.ogg
+gunlance/hitf1	sounds/cinnamom/cinnabun_gunlance_hitf1.ogg
+gunlance/hitf2	sounds/cinnamom/cinnabun_gunlance_hitf2.ogg
+gunlance/hitf3	sounds/cinnamom/cinnabun_gunlance_hitf3.ogg
+
 title/fadein	sounds/title_fadein.ogg
 
 wrath/fire1	sounds/wrath/wrath_fire1.ogg

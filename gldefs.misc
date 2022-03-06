@@ -24,6 +24,18 @@ HardwareShader Texture "graphics/title_marisa_dark_eyes.png"
 {
 	Shader "shaders/glsl/Bilinear.fp"
 }
+HardwareShader Texture "graphics/title_cinnamon.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_cinnamon_eye.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
+HardwareShader Texture "graphics/title_cinnamon_dark.png"
+{
+	Shader "shaders/glsl/Bilinear.fp"
+}
 HardwareShader Texture "graphics/title_dust_0.png"
 {
 	Shader "shaders/glsl/Bilinear.fp"

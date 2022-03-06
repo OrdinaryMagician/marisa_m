@@ -13,6 +13,7 @@ Class MarisaTitleStuff : EventHandler
 {
 	ui TextureID bgtex;
 	ui TextureID marisatex[4];
+	ui TextureID cinnamontex[3];
 	ui TitleSmoke smk[128];
 	ui TextureID smk_tex[8];
 	ui TitleSmoke ash[128];
@@ -144,6 +145,12 @@ Class MarisaTitleStuff : EventHandler
 		}
 	}
 
+	// heh
+	private clearscope double smerp( double a ) const
+	{
+		return (sin((a-.5)*180.)+1.)/2.;
+	}
+
 	override void RenderUnderlay( RenderEvent e )
 	{
 		Screen.DrawTexture(camtex,false,0,0);
@@ -152,6 +159,9 @@ Class MarisaTitleStuff : EventHandler
 		if ( !marisatex[1] ) marisatex[1] = TexMan.CheckForTexture("graphics/title_marisa_dark_eyes.png",TexMan.Type_Any);
 		if ( !marisatex[2] ) marisatex[2] = TexMan.CheckForTexture("graphics/title_marisa.png",TexMan.Type_Any);
 		if ( !marisatex[3] ) marisatex[3] = TexMan.CheckForTexture("graphics/title_marisa_eyes.png",TexMan.Type_Any);
+		if ( !cinnamontex[0] ) cinnamontex[0] = TexMan.CheckForTexture("graphics/title_cinnamon_dark.png",TexMan.Type_Any);
+		if ( !cinnamontex[1] ) cinnamontex[1] = TexMan.CheckForTexture("graphics/title_cinnamon.png",TexMan.Type_Any);
+		if ( !cinnamontex[2] ) cinnamontex[2] = TexMan.CheckForTexture("graphics/title_cinnamon_eye.png",TexMan.Type_Any);
 		if ( !logotex ) logotex = TexMan.CheckForTexture("graphics/MarisaLogo.png",TexMan.Type_Any);
 		if ( !gradtex ) gradtex = TexMan.CheckForTexture("graphics/title_grad.png",TexMan.Type_Any);
 		double GameSecs = (titletimer+e.FracTic)/GameTicRate;
@@ -211,15 +221,27 @@ Class MarisaTitleStuff : EventHandler
 		// the logo and stuff
 		else
 		{
+			double ofs = 150*smerp(clamp((GameSecs-31)/2.,0.,1.));
+			if ( titletimer < 34*GameTicRate )
+			{
+				alf = clamp((GameSecs-30.)/2.,0.,1.);
+				Screen.DrawTexture(cinnamontex[0],false,Screen.GetWidth()/2-ofs*texscl*.8,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf,DTA_ColorOverlay,Color(128,0,0,0));
+			}
 			Screen.DrawTexture(gradtex,false,0,Screen.GetHeight(),DTA_DestWidth,Screen.GetWidth(),DTA_DestHeight,1024*CleanYFac_1,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(0,0,0),DTA_TopOffset,256);
 			RenderSmokeLayer(e,GameSecs,true,.5);
+			if ( titletimer < 36*GameTicRate )
+			{
+				alf = clamp((GameSecs-32.)/3.,0.,1.);
+				Screen.DrawTexture(cinnamontex[1],false,Screen.GetWidth()/2-ofs*texscl*.8,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
+			}
+			else Screen.DrawTexture(cinnamontex[1],false,Screen.GetWidth()/2-ofs*texscl*.8,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
 			if ( titletimer < 34*GameTicRate )
 			{
 				alf = clamp((GameSecs-31.)/3.,0.,1.);
-				Screen.DrawTexture(marisatex[0],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
-				Screen.DrawTexture(marisatex[2],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
+				Screen.DrawTexture(marisatex[0],false,Screen.GetWidth()/2+ofs*texscl,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
+				Screen.DrawTexture(marisatex[2],false,Screen.GetWidth()/2+ofs*texscl,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
 			}
-			else Screen.DrawTexture(marisatex[2],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
+			else Screen.DrawTexture(marisatex[2],false,Screen.GetWidth()/2+ofs*texscl,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
 			RenderSmokeLayer(e,GameSecs,false,1.);
 			alf = clamp(1.-(GameSecs-30.)/2.,.0,.5);
 			Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
@@ -227,16 +249,27 @@ Class MarisaTitleStuff : EventHandler
 			if ( titletimer < 34*GameTicRate )
 			{
 				alf = clamp((GameSecs-31.)/3.,0.,1.);
-				Screen.DrawTexture(marisatex[1],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,1.-alf);
-				Screen.DrawTexture(marisatex[3],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
+				Screen.DrawTexture(marisatex[1],false,Screen.GetWidth()/2+ofs*texscl,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,1.-alf);
+				Screen.DrawTexture(marisatex[3],false,Screen.GetWidth()/2+ofs*texscl,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_Alpha,alf);
 			}
-			else Screen.DrawTexture(marisatex[3],false,Screen.GetWidth()/2,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
+			else Screen.DrawTexture(marisatex[3],false,Screen.GetWidth()/2+ofs*texscl,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
+			if ( titletimer < 32*GameTicRate )
+			{
+				alf = clamp((GameSecs-31.5)*2.,0.,1.)**2.;
+				Screen.DrawTexture(cinnamontex[2],false,Screen.GetWidth()/2-ofs*texscl*.8,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alf);
+			}
+			else if ( titletimer < 34*GameTicRate )
+			{
+				alf = 1.-.25*(clamp((GameSecs-32.)/2.,0.,1.)**3.);
+				Screen.DrawTexture(cinnamontex[2],false,Screen.GetWidth()/2-ofs*texscl*.8,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alf);
+			}
+			else Screen.DrawTexture(cinnamontex[2],false,Screen.GetWidth()/2-ofs*texscl*.8,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,.75);
 			if ( bFadeFromBlack && (titletimer < 31*GameTicRate) )
 			{
 				alf = clamp(1.-(GameSecs-30.),.0,.5);
 				Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
 			}
-			Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-512*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl);
+			Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-128*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl);
 		}
 	}
 }

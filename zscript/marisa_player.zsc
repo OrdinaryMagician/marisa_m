@@ -25,6 +25,7 @@ Class MarisaPlayer : SWWMPlayer
 		SWWMPlayer.DodgeSpeed 10;
 		SWWMPlayer.MinCrouch .45;	// ensure same crouching height as a 56 unit tall player
 		SWWMPlayer.ResurrectType RT_RESPAWN;
+		SWWMPlayer.PainThresholds 0, 15, 40, 50;
 		+SWWMPLAYER.CANDODGE;
 	}
 

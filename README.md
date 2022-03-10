@@ -4,7 +4,7 @@
 
 While all the usual characters were out and about doing their fightin', there was one young girl doing some adventuring of her own. **Marisa the Ashen**, an aspiring **Anarukon** spellsword and faithful roommate of **Ibuki Miyamoto**. She saw what her good friend was doing, and she wanted to earn some glory of her own too, fighting demons, magic beasts, or whatever else she wished to encounter.
 
-This side mod serves as a bit of a *"coda"* for the entire **DEMOLITIONIST** series, and shines some light into a somewhat neglected character that I very much care about, as we share a name. Now let **Marisa** unleash her powers unto the vile hordes of Hell, or the wicked armies of the Serpent Riders, whichever it may be... They will all burn to ashes at her hands.
+This side mod serves as a bit of a *"coda"* for the entire **DEMOLITIONIST** series, and shines some light into a somewhat neglected character that I very much care about, as we share a name. Now let **Marisa** unleash her powers unto the vile hordes of **Hell**, or the wicked armies of the **Serpent Riders**, whichever it may be... They will all burn to ashes at her hands.
 
 ---
 
@@ -131,33 +131,49 @@ Some useful stuff is to be found in the field, if you know where to look.
 
 ### Cherry *[Health Bonus, Armor Bonus]*
 
+*"Hehe... Cherry..."*
+
 A tiny fruit snack. May restore anywhere from 1 to 3 health.
 
 ### Stimmy Pack *[Stimpack, Crystal Vial]*
+
+*"Stimmy... Stimmy..."*
 
 It seems that the name definitely stuck on **Marisa** too from hearing **Saya** use it. Just a small heal that can be used regularly.
 
 ### Refreshing Beverage *[Medikit, Quartz Flask]*
 
+*"Tasty."*
+
 A favorite among **Anarukon** adventurers. Provides a decent boost in health and has a very pleasant taste too.
 
 ### Akashna Extract *[Soulsphere, Mystic Urn]*
+
+*"This tea makes me feel good."*
 
 The most efficient solution for any maladies that may affect an **Anarukon**, concocted with the blood of a very peculiar creature. This will bring you back to full health in no time, with some lingering regeneration, and can even push you over the 100% limit.
 
 ### Shield Orb *[Megasphere, Morph Ovum, Porkalator]*
 
+*"Orb..."*
+
 An extra layer of protection on top of all your armor, plus a full heal, all in one. Pretty handy.
 
 ### Ring of Protection *[Green Armor, Silver Shield, Hexen Armor]*
+
+*"Pretty rings..."*
 
 A magic ring that enhances the damage resistances of the wielder. Up to eight of them can be carried at once.
 
 ### Ring Set *[Blue Armor, Enchanted Shield, Dragonskin Bracers]*
 
+*"So many, for one hand."*
+
 A simple set of four rings of protection. Excess is left behind.
 
 ### Ammunition Pack *[Backpack, Bag of Holding, Krater of Might]*
+
+*"All the good things in one place."*
 
 An assortment of ammunition for your three firearms. Any excess ammo that can't be picked up will be left behind.
 
@@ -165,47 +181,69 @@ A smaller supply replaces **Combined Mana**.
 
 ### Dreadfire Solution *[Blursphere, Shadowsphere, Banishment Device]*
 
+*"Green God, grant me your blessing."*
+
 A concoction for those who wish to delve into the eldritch chaos of wild pyromancy. Greatly boosts your mana reserves, temporarily pushing you past 100%, with the added effect of transforming it all into chaotic mana, which boosts the strength of your spells and gives them an additional caustic damage bonus.
 
 ### Hellion Cherry *[Rockets, Timebomb of the Ancients, Flame Orbs, Mace Spheres, Disc of Repulsion]*
+
+*"Cherry bomb... \*giggle\*"*
 
 Pocket incendiary bombs, nasty little things. These are used through a dedicated *"Quick Grenade"* keybind, like in the other mods.
 
 ### Devastation Sigil *[Berserk, Tome of Power, Dark Servant]*
 
+*"A power most destructive... Hehe..."*
+
 A divine artifact that multiplies all damage you deal by 25x. Do be careful because even self-inflicted damage will be boosted.
 
 ### Omnisight *[Computer Map, Map Scroll]*
+
+*"Saya made this."*
 
 Plugged into a compatible device, this will upload a full map of the area with highlighted exits and key items.
 
 ### Red Oni Milk *[Invulnerability, Ring of Invincibility, Icon of the Defender]*
 
+*"It's better to drink it directly from her..."*
+
 **Ibuki**'s own personal supply. Very healthy and revitalizing, enough to practically make you unstoppable for a limited time.
 
 ### Brightsphere *[Lite-Amp, Torch]*
+
+*"Shiny... Shiny..."*
 
 A shiny orb that hovers around you and lights the way.
 
 ### Elemental Coating *[Radsuit]*
 
+*"Protection, very important."*
+
 The wise adventurer's choice for wading through dangerous liquids. Just pop it and go.
 
 ### Aerial Amulet *[Wings of Wrath]*
+
+*"I feel... Fluttery..."*
 
 Yet another helpful artifact. Allows you to float around in the air. Can be toggled. In **Hexen**, its effects only wear off between hubs.
 
 ### Safety Tether *[Chaos Device]*
 
+*"Why does it laugh?"*
+
 A helpful device to save your ass when you get trapped somewhere or are very dangerously cornered.
 
 ### Accelerator Amulet *[Boots of Speed]*
+
+*"My legs are fast."*
 
 Lets you go FAST, for a limited time. It also appears to make your kicks stronger, too.
 
 ---
 
 ## The Boyfriend
+
+*"My love eternal, my precious Cinnamon Valentine."*
 
 At any given moment, it's possible to give your boyfriend, **Cinnamon Valentine**, a call. He will come to your aid as soon as possible, and follow you around. The companion AI may not be great, but at least he tries.
 

@@ -43,6 +43,19 @@ QUITMSG6 = "See you next time.";
 QUITMSG7 = "Is it break time?";
 QUITMSG8 = "I will wait for your return.";
 QUITMSG9 = "I'm not scary.";
+// startup (don't localize)
+STARTUP1 =
+"\n"
+" \cwThe freezing cold of death's gaze.\c-\n"
+" \cwThe burning heat of fire's rage.\c-\n"
+"\n"
+" \cwKnow, beast, of that which you fear,\c-\n"
+" \cwfor your days are certainly counted.\c-\n"
+"\n";
+STARTUP2 = "";
+STARTUP3 = "";
+STARTUP4 = "";
+STARTUP5 = "";
 // misc
 D_ONIMILK = "The effects of the Red Oni milk have worn off.";
 D_AMULETFAST = "The Accelerator Amulet's effects have expired.";
@@ -64,9 +77,9 @@ ASH_INTERPAR = "PAR TIME:";
 ASH_INTERTOTAL = "TOTAL TIME:";
 // weapon tooltips
 // intermission tips
-ASH_NINTERTIP = "26";
-$ifgame(heretic) ASH_NINTERTIP = "27";
-$ifgame(hexen) ASH_NINTERTIP = "28";
+ASH_NINTERTIP = "28";
+$ifgame(heretic) ASH_NINTERTIP = "29";
+$ifgame(hexen) ASH_NINTERTIP = "30";
 ASH_INTERTIP = "Tip #%d:";
 ASH_INTERTIP1 = "Marisa isn't scary... Unless you give her a reason to be.";
 ASH_INTERTIP2 = "If you can't reach something with your blade, just shoot it with a gun.";
@@ -83,7 +96,7 @@ ASH_INTERTIP12 = "Rings of Protection stack up to eight times, making you almost
 ASH_INTERTIP13 = "Hellion Cherries are nasty little things. They blow up real good.";
 ASH_INTERTIP14 = "The Dreadfire Solution temporarily transforms all your spells into powerful chaotic variants.";
 ASH_INTERTIP15 = "The Devastation Sigil will magnify all your damage. Careful not to hurt yourself.";
-ASH_INTERTIP16 = "Blood thining reduces damage resistance. Only Akashna extract can clear this debuff.";
+ASH_INTERTIP16 = "Blood thining reduces maximum health. Only Akashna extract can clear this debuff.";
 ASH_INTERTIP17 = "This mod features no actual mag management, so don't worry about partial reloads.";
 ASH_INTERTIP18 = "Cinnamon can be summoned at any time if extra help is needed.";
 ASH_INTERTIP19 = "Once dismissed, Cinnamon can't be summoned again until his health has recovered.";
@@ -95,5 +108,7 @@ ASH_INTERTIP24 = "Your mana regenerates quite fast, as long as you still have pl
 ASH_INTERTIP25 = "All your firearms can be empowered with altfire at the cost of some mana.";
 ASH_INTERTIP26 = "Even the Serpent Riders should learn to fear this daughter of death.";
 $ifgame(doom) ASH_INTERTIP26 = "The more brutal you are towards demons, the more likely they are to fear you.";
-ASH_INTERTIP27 = "The Safety Tether is the best \"get out of jail free\" card.";
-ASH_INTERTIP28 = "The Accelerator Amulet not only makes you go fast, it makes you kick hard too.";
+ASH_INTERTIP27 = "Marisa has one major weakness: Capybara. There is no way she can resist the charm of coconut doggy.";
+ASH_INTERTIP28 = "You can interact with your boyfriend by pressing use on him. This allows sharing some items, among other things.";
+ASH_INTERTIP29 = "The Safety Tether is the best \"get out of jail free\" card.";
+ASH_INTERTIP30 = "The Accelerator Amulet not only makes you go fast, it makes you kick hard too.";

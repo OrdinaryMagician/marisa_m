@@ -10,14 +10,13 @@ ASH_EXTRAFIRE = "Granada";
 ASH_SPELLPREV = "Hechizo Anterior";
 ASH_SPELLNEXT = "Hechizo Siguiente";
 // skills
-ASH_SKCHILL="\cvEspíritu Dócil\c-";
-ASH_SKEASY="\cdEspíritu Alegre\c-";
-ASH_SKNORMAL="\cfEspíritu Bravo\c-";
-ASH_SKHARD="\ciEspíritu Severo\c-";
-ASH_SKHARDCORE="\crEspíritu Cruel\c-";
+ASH_SKEASY="\cfBreve Respiro\c-";
+ASH_SKNORMAL="\ciAventura de No-muerto\c-";
+ASH_SKHARD="\cgCastigo de Sangre\c-";
+ASH_SKHARDCORE="\crMano del Odio\c-";
 ASH_SKHARDCORECONFIRM="\cr¿Seguro que quieres hacer eso?\nPuede que te pateen el culo.\c-\n\n\cjMonstruos rápidos\n1.5x salud y daño de monstruos\n25% de agresividad extra\nTrucos deshabilitados\nMonstruos de cooperativo\c-\n\n(Pulsa Y para un desafío)";
-ASH_SKLUNATIC="\cmEspíritu Terrible\c-";
-ASH_SKLUNATICCONFIRM="\cmCiertamente deseas morir.\nElige esta dificultad si te atreves.\c-\n\n\cjTodos los cambios de Espíritu Cruel\n+\nDoble velocidad de enemigos\nProyectiles enemigos duplicados\nPueden aparecer enemigos extra\nReflejos instantáneos de enemigo\nLos enemigos no se estremecen\nLos enemigos no pelean entre si\c-\n\n(Pulsa Y para morir al instante)";
+ASH_SKLUNATIC="\cmEclipse Oscuro\c-";
+ASH_SKLUNATICCONFIRM="\cmCiertamente deseas morir.\nElige esta dificultad si te atreves.\c-\n\n\cjTodos los cambios de \crMano del Odio\cj\n+\nDoble velocidad de enemigos\nProyectiles enemigos duplicados\nPueden aparecer enemigos extra\nReflejos instantáneos de enemigo\nLos enemigos no se estremecen\nLos enemigos no pelean entre si\c-\n\n(Pulsa Y para morir al instante)";
 // mod menu
 ASH_MTITLE = "Opciones de CHILD OF ASH";
 ASH_MCREDS = "Créditos de CHILD OF ASH";

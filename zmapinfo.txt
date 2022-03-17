@@ -68,16 +68,6 @@ GameInfo
 
 ClearSkills
 
-Skill chill
-{
-	AutoUseHealth
-	DamageFactor = 0.5
-	EasyBossBrain
-	SlowMonsters
-	SpawnFilter = baby
-	ACSReturn = 0
-	Name = "$ASH_SKCHILL"
-}
 Skill easy
 {
 	DamageFactor = 0.75
@@ -128,7 +118,7 @@ Skill lunatic
 	MustConfirm = "$ASH_SKLUNATICCONFIRM"
 }
 
-Map TITLEMAP "CHILD OF ASH Title Map"
+Map TITLEMAP "Title Map"
 {
 	Music = ""
 	EventHandlers = "MarisaTitleStuff"

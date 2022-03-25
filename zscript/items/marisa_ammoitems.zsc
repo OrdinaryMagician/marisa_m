@@ -5,7 +5,7 @@ Class MarisaMana : SWWMAmmo
 {
 	Default
 	{
-		Inventory.MaxAmount 200;
+		Inventory.MaxAmount 100;	// actually 200, but this prevents scripts from breaking it
 		+INVENTORY.UNDROPPABLE;
 		+INVENTORY.UNTOSSABLE;
 		+INVENTORY.UNCLEARABLE;

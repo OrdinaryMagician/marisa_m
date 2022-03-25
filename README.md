@@ -95,7 +95,7 @@ Somewhat sizable shotgun shells. You'll find 'em in bunches, or boxes. **Frag-C*
 This large weapon is designed for burning through thick armor and hitting anything hiding on the other side. Capable of melting holes through most metals, as well as dense stone, nothing can truly stop the advance of this thing. Naturally, **Marisa** wanted to get her hands on one of these, as the prospect of raining down a stream of pure incandescent destruction on monsters sounds just absolutely awesome.
 
 - **Primary fire:** Steady stream of piercing plasma.
-- **Secondary fire:** Overdrive mode, injects mana to cause the beam to burn harder and go deeper, while consuming ammo faster.
+- **Secondary fire:** Overdrive mode, injects mana to cause the beam to burn harder and deeper, but consumes one whole cell pack.
 - **Reload:** Does what you'd expect. The weapon can feed from two individual cell packs, for 2x10 shots. Note that for safety reasons, an unsealed cell pack can't be removed from the weapon until fully depleted.
 
 ### Antaresian Cells *[Cells, Runes, Green Mana]*

@@ -1,10 +1,61 @@
 // mod credits
 
+// lil' hack to display Japanese track titles
+Class SWWMCreditsEntryMarisaHack : SWWMCreditsEntry
+{
+	Font btextfont;
+
+	SWWMCreditsEntryMarisaHack Init( String t, String b = "", int c1 = SWWMCREDITSCOL1, int c2 = SWWMCREDITSCOL2 )
+	{
+		hasicon = false;
+		titlecol = c1;
+		btextcol = c2;
+		title = StringTable.Localize(t);
+		if ( b == "" )
+		{
+			width = CalcWidth();
+			height = CalcHeight();
+			return self;
+		}
+		String b2 = StringTable.Localize(b);
+		btextfont = Font.GetFont('smallfont_creditshack');
+		btext = btextfont.BreakLines(b2,320);
+		width = CalcWidth();
+		height = CalcHeight();
+		return self;
+	}
+
+	override double Draw( Vector2 ss, double x, double y )
+	{
+		// don't draw if we're offscreen, saves time
+		if ( (y+height < 0) || (y > ss.y) ) return height;
+		double yy = y;
+		int w = smallfont.StringWidth(title);
+		double xx = x-w/2;
+		Screen.DrawText(smallfont,titlecol,xx,yy,title,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+		if ( !btext ) return height;
+		// underline
+		int cw = int(ceil((w+8)/6.))*6;
+		xx = x-cw/2;
+		for ( int i=0; i<cw; i+=6 )
+			Screen.DrawChar(smallfont,titlecol,xx+i,yy+6,0x5F,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+		yy += smallfont.GetHeight()+6;
+		for ( int i=0; i<btext.Count(); i++ )
+		{
+			xx = x-(btext.StringWidth(i))/2;
+			Screen.DrawText(btextfont,btextcol,xx,yy,btext.StringAt(i),DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
+			yy += smallfont.GetHeight();
+		}
+		return height;
+	}
+}
+
 Class MarisaCreditsMenu : SWWMCreditsMenu
 {
 	override void ChildInit( Menu parent )
 	{
-		cmusic.Push(new("SWWMCreditsEntry").Init("Teque","Stuck\nState of Payne"));
+		cmusic.Push(new("SWWMCreditsEntryMarisaHack").Init("-45","ダンスインザライト"));
+		cmusic.Push(new("SWWMCreditsEntryMarisaHack").Init("LUNE","時の葬送"));
 		cmusic.Push(new("SWWMCreditsEntry").Init("BouncyTEM","Ashen Tide"));
 	}
 	override String, int GetCreditsMus()

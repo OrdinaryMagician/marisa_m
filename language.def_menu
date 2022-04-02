@@ -31,7 +31,7 @@ ASH_HELP_PAGE1_TXT =
 "\n"
 "\cj\"You are leaving? You want to fight the demons?\"\c-, she said, and to this \cjIbuki\c- responded: \cj\"Come on, you think I'm just gonna sit there with my arms crossed? Even if Sayacchi's robot is strong enough to win this war, I still wanna do my part.\"\c-\n"
 "\n"
-"And then, a glow came to the sharp eyes of that girl. Crackling her knuckles and cackling maniacally, she added: \cj\"Then I will fight, too.\"\c-\n"
+"And then, a glow came to the sharp eyes of that girl. Cracking her knuckles and cackling maniacally, she added: \cj\"Then I will fight, too.\"\c-\n"
 "\n"
 "\cjAnd so it is, that one more joins the battle, and the demons shall have one more name to fear, that of Marisa Azanth, the Child of Ash.";
 $ifgame(heretic) ASH_HELP_PAGE1_TXT =

@@ -26,13 +26,8 @@ Class MarisaPlayer : SWWMPlayer
 		SWWMPlayer.MinCrouch .45;	// ensure same crouching height as a 56 unit tall player
 		SWWMPlayer.ResurrectType RT_RESPAWN;
 		SWWMPlayer.PainThresholds 0, 15, 40, 50;
+		SWWMPlayer.HealthDecrease 50, 10;
 		+SWWMPLAYER.CANDODGE;
-	}
-
-	override void Die( Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath )
-	{
-		Super.Die(source,inflictor,dmgflags,MeansOfDeath);
-		MaxHealth = StartHealth = max(50,SpawnHealth()-10);
 	}
 
 	override Weapon PickWeapon( int slot, bool checkammo )
@@ -41,16 +36,5 @@ Class MarisaPlayer : SWWMPlayer
 		else if ( slot == 0 ) EventHandler.SendNetworkEvent("marisaspellslot",2);
 		else return Super.PickWeapon(slot,checkammo);
 		return player.ReadyWeapon;
-	}
-}
-
-// event handler hook needed because player_t::Resurrect() does not respect SpawnHealth
-extend Class SWWMHandler
-{
-	override void PlayerRespawned( PlayerEvent e )
-	{
-		PlayerInfo p = players[e.PlayerNumber];
-		if ( p.mo && (p.mo is 'MarisaPlayer') )
-			p.Health = p.mo.Health = p.mo.SpawnHealth();
 	}
 }

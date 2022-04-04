@@ -46,6 +46,8 @@ QUITMSG9 = "No doy miedo.";
 D_ONIMILK = "Los efectos de la leche de Oni Rojo se han desvanecido.";
 D_AMULETFAST = "Los efectos del Amuleto de Aceleración han expirado.";
 D_AMULETFLY = "El Amuleto Aéreo ha perdido su potencia.";
+ASH_HORNY = "\cbCinnamon\c-: ¿Que estás haciendo? ... ¡Uwah!";
+ASH_HORNY2 = "\cwMarisa\c-: ¡Ah!";
 ASH_TITLEPRESENTSB = "presenta";
 ASH_TITLEMODBYA = "un mod de";
 ASH_TITLEINTROA = "\"Y así la hija del fuego y la muerte pronto caminará sobre la Tierra,";
@@ -60,6 +62,51 @@ ASH_INTERTIME = "TU TIEMPO:";
 ASH_INTERPAR = "TIEMPO PAR:";
 ASH_INTERTOTAL = "TIEMPO TOTAL:";
 // weapon tooltips
+TT_MARISAUNARMED =
+"\cw\"Soy muy fuerte.\"\c-\n"
+"\n"
+"\cwFuego primario:\c- Pulsa para golpe débil, mantén para golpe fuerte.\n"
+"\cwFuego secundario:\c- Patada.\n"
+"Útil para cuando necesitas pelear con rapidez.";
+TT_MARISASWORD =
+"\cw\"Mi espada fiel.\"\c-\n"
+"\n"
+"\cwFuego primario:\c- Ataques laterales.\n"
+"\cwFuego secundario:\c- Ataque circular cargado.\n"
+"Bien para cortar y machacar, con buenos tiempos.";
+TT_MARISASLAB =
+"\cw\"La espada de un verdadero caballero.\"\c-\n"
+"\n"
+"\cwFuego primario:\c- Ataques lentos y peados.\n"
+"\cwFuego secundario:\c- Mortífero ataque vertical.\n"
+"Algunos pensarían que es demasiado grande y\n"
+"demasiado pesada para considerarse una espada.";
+TT_MARISAHAMMER =
+"\cw\"Para aplastar todo el mal.\"\c-\n"
+"\n"
+"\cwFuego primario:\c- Atacar con la cosa.\n"
+"\cwFuego secundario:\c- Soltar el martillazo.\n"
+"Las ondas expansivas que causa pueden\n"
+"lanzar a los enemigos por los aires.";
+TT_MARISAPISTOL =
+"\cw\"Una pistola suficientemente grande.\"\c-\n"
+"\n"
+"\cw23mm HEI\c-, 4 balas.\n"
+"Las balas sueltan metralla al impactar.\n"
+"La sobrecarga mejora el daño explosivo.";
+TT_MARISASHOTGUN =
+"\cw\"Un tronado ensordecedor, y luego silencio.\"\c-\n"
+"\n"
+"\cw20mm Frag-C\c-, 5+2 cartuchos.\n"
+"Daño ácido a bocajarro.\n"
+"La sobrecalga incendia los perdigones.";
+TT_MARISABEAMGUN =
+"\cw\"El poder de muchos soles.\"\c-\n"
+"\n"
+"\cwPlasma de galio\c-, 2x10 disparos.\n"
+"Haz de iones penetrante, con rango moderado.\n"
+"La sobrecarga incrementa el rango y daño,\n"
+"pero gasta un cargador por disparo.";
 // intermission tips
 ASH_INTERTIP = "Consejo #%d:";
 ASH_INTERTIP1 = "Marisa no da miedo... A menos que le des una razón para darlo.";

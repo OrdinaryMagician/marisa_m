@@ -29,13 +29,13 @@ ASH_HELP_PAGE1 = "The Story So Far";
 ASH_HELP_PAGE1_TXT =
 "The year is 2148. The Earth is in danger, demons are pouring out en masse from portals all around the globe, and death and destruction is rampant all over. But this will not be the end for humanity, as there are many who fight back. One such fighter is the former soldier \cjIbuki Miyamoto\c-, also known as the \cjRed Oni\c-. But as she was readying herself to go out into this worldwide battlefield, one of her roommates took notice.\n"
 "\n"
-"\cj\"You are leaving? You want to fight the demons?\"\c-, she said, and to this \cjIbuki\c- responded: \cj\"Come on, you think I'm just gonna sit there with my arms crossed? Even if Sayacchi's robot is strong enough to win this war, I still wanna do my part.\"\c-\n"
+"\cj\"You are leaving? You want to fight the demons?\"\c-, she said, and to this \cjIbuki\c- responded: \cj\"Come on, you think I'm just gonna sit there with my arms crossed? Even if Sayacchi's robot is strong enough to win this war, I still wanna do my part\"\c-.\n"
 "\n"
-"And then, a glow came to the sharp eyes of that girl. Cracking her knuckles and cackling maniacally, she added: \cj\"Then I will fight, too.\"\c-\n"
+"And then, a glow came to the sharp eyes of that girl. Cracking her knuckles and cackling maniacally, she added: \cj\"Then I will fight, too\"\c-.\n"
 "\n"
 "\cjAnd so it is, that one more joins the battle, and the demons shall have one more name to fear, that of Marisa Azanth, the Child of Ash.";
 $ifgame(heretic) ASH_HELP_PAGE1_TXT =
-"\cj\"Hey, Marisa, feeling bored? How about you walk down over to Saya's place and check out her portal to another world? You can have all sorts of adventures in there.\"\c-\n"
+"\cj\"Hey, Marisa, feeling bored? How about you walk down over to Saya's place and check out her portal to another world? You can have all sorts of adventures in there\"\c-.\n"
 "\n"
 "\cjIbuki\c- so casually said this as she noticed the witch slouched on the sofa, absentmindedly staring at the television screen. But she didn't even seem to notice her.\n"
 "\n"
@@ -47,11 +47,11 @@ $ifgame(heretic) ASH_HELP_PAGE1_TXT =
 $ifgame(hexen) ASH_HELP_PAGE1_TXT =
 "In the main hall of the \cjRust Palace\c-, one man was sitting in silence, with an irate expression on his face, sometimes taking sips of a tea that had gone cold.\n"
 "\n"
-"Moments later, \cjMarisa\c- approached, and sat next to him. After another sip of his tea, not even noticing her presence, he continued rambling. \cj\"Fucking puzzles, fucking bullshit... What sort of trash is this even, I swear... I'm never setting foot in that world ever again...\"\c-"
+"Moments later, \cjMarisa\c- approached, and sat next to him. After another sip of his tea, not even noticing her presence, he continued rambling. \cj\"Fucking puzzles, fucking bullshit... What sort of trash is this even, I swear... I'm never setting foot in that world ever again...\"\c-.\n"
 "\n"
-"She then called to him. \cj\"Lord Kirin... What are you so angry about?\"\c-. He looked up at her, frowning, squinting his eyes, and answered. \cj\"Sayacchi made me go on an adventure, one that I deeply regret. This accursed realm of Cronos... It's truly despicable.\".\c-\n"
+"She then called to him. \cj\"Lord Kirin... What are you so angry about?\"\c-. He looked up at her, frowning, squinting his eyes, and answered. \cj\"Sayacchi made me go on an adventure, one that I deeply regret. This accursed realm of Cronos... It's truly despicable\"\c-.\n"
 "\n"
-"\cj\"If this world you speak of has hurt you...\"\c-, she said with her usual flat tone, \cj\"Then, I will punish everyone in it.\"\c-\n"
+"\cj\"If this world you speak of has hurt you...\"\c-, she said with her usual flat tone, \cj\"Then, I will punish everyone in it\"\c-.\n"
 "\n"
 "\cjAnd just like that, she walked away without saying any other word, as Kirin stared in confusion. Looks like a new adventure is coming.\c-";
 ASH_HELP_PAGE2 = "Who Is Marisa Azanth";
@@ -60,7 +60,7 @@ ASH_HELP_PAGE2_TXT =
 "\n"
 "And on the other side, she's also the daughter of a grim reaper. Specifically, her other mother is \cjAkari Shiroko\c-, one of the many \"white maidens\" born of the union between a human and a knight of death. This specific blood tie causes her to irradiate a certain dark aura that brings demons to fear her, more so as she keeps massacring them and instilling this dread upon their wicked hearts.\n"
 "\n"
-"So, to sum up, \cjMarisa\c- is a sort of \"warrior witch\", both a natural at fire magic and swinging very large swords, while at the same time also having undisclosed powers over death itself. So, how did someone like her end up as \cjIbuki\c-'s roommate? Well, only the two of them truly know...";
+"So, to sum up, \cjMarisa\c- is a sort of \"warrior witch\", both a natural at fire magic and swinging very large swords, while at the same time also having undisclosed powers over death itself. So, how did someone like her end up as \cjIbuki\c-'s roommate? Well, that's something only the two of them truly know...";
 ASH_HELP_PAGE3 = "Marisa's Arsenal (Part 1: Weapons)";
 ASH_HELP_PAGE3_TXT =
 "As is customary for a warrior of her caliber, \cjMarisa\c-'s own lineup of weapons would of course feature big swords, two of them, in fact. Plus one third, very potent tool of destruction that could only be described as an \"asteroid on a stick\". And you may think then, if that's the case for the melee weapons, what kinds of guns would she use? Boy, you are not ready... There are three firearms to complement the melee options, and each of them packs a massive wallop.\n"

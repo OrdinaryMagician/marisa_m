@@ -22,8 +22,61 @@ ASH_MTITLE = "Opciones de CHILD OF ASH";
 ASH_MCREDS = "Créditos de CHILD OF ASH";
 // Help menu
 ASH_HELP_PAGE1 = "La Historia Hasta Ahora";
+ASH_HELP_PAGE1_TXT =
+"El año es 2148, La Tierra está en peligro, los demonios brotan en masa desde portales por todo el mundo, y la muerte y destrucción reinan por doquier. Pero este no será el fin para la humanidad, ya que hay muchos que luchan contra esta amenaza. Uno de dichos luchadores es la ex-soldado \cjIbuki Miyamoto\c-, también conocida como el \cjOni Rojo\c-. Pero mientras se preparaba para salir ahí fuera a este campo de batalla mundial, una de sus compañeras de piso se dio cuenta.\n"
+"\n"
+"\cj\"¿Te vas? ¿Quieres luchar contra los demonios?\"\c-, dijo, y a esto respondió \cjIbuki\c-: \cj\"Vamos, ¿crees que me voy a quedar aquí de brazos cruzados? Aunque el robot de Sayacchi sea fuerte suficiente para ganar esta guerra, yo también quiero hacer algo por mi parte\"\c-.\n"
+"\n"
+"Y entonces, los agudos ojos de la chica brillaron. Crujiendo sus nudillos y soltando una risa maníaca, dijo entonces: \cj\"Pues yo lucharé también\"\c-.\n"
+"\n"
+"\cjY así es, que uno más se une a la batalla, y los demonios conocerán otro nombre al que temer, el de Marisa Azanth, la Hija de Ceniza.";
+$ifgame(heretic) ASH_HELP_PAGE1_TXT =
+"\cj\"Oye, Marisa, ¿estás aburrida? ¿Pues por que no te pasas por casa de Saya y pruebas su portal a otro mundo? Puedes tener toda clase de aventuras por ahí\"\c-.\n"
+"\n"
+"\cjIbuki\c- así de casualmente dijo esto al ver a la bruja encorvada en el sofá, con la mirada fija en el televisor. Pero no parece que se haya dado cuenta.\n"
+"\n"
+"\cj\"Es un mundo de fantasía lleno de bestias malignas que definitivamente necesitan ser aniquiladas. Venga, si es que suena perfecto para ti\"\c-.\n"
+"\n"
+"De un sobresalto parece volver a la vida. ¿Bestias malignas que aniquilar? Esas eran las palabras que necesitaba oír. \cj\"Guau sí que te has puesto a tope\"\c-, exclamó \cjIbuki\c- al ver esa reacción repentina, \cj\"Quieres irte ya para ahí, ¿no?\"\c-. \cjMarisa\c- asintió, y corrió apresuradamente a su habitación para prepararse para la aventura.\n"
+"\n"
+"\cjLa tierra de Parthoris ni siquiera estaba preparada para lo que iba a venir luego.\c-";
+$ifgame(hexen) ASH_HELP_PAGE1_TXT =
+"En el salón principal del \cjPalacio de Óxido\c-, un hombre estaba sentado en silencio, con una expresión iracunda en su rostro, de vez en cuando tomando sorbos de un té que ya estaba frío.\n"
+"\n"
+"Momentos después, \cjMarisa\c- llegó, y se sentó junto a él. Tras otro sorbo de su té, sin darse cuenta siquiera de su presencia, siguió divagando. \cj\"Putos puzzles, puta mierda... Pero que mierda es esta, en serio... Es que no pienso pisar ese mundo nunca más...\"\c-.\n"
+"\n"
+"Entonces fue que le llamó la atención. \cj\"Lord Kirin... ¿Por qué estás tan enfadado?\"\c-. Alzó su mirada ante ella, frunciendo el ceño, con ojos entreabiertos, y respondió. \cj\"Sayacchi me mandó en una aventura, una que lamento profundamente. Este maldito mundo de Cronos... Es verdaderamente despreciable\"\c-.\n"
+"\n"
+"\cj\"Si este mundo del que hablas te ha hecho daño...\"\c-, dijo ella con su típico tono plano, \cj\"Entonces, castigaré a todos en él.\"\c-\n"
+"\n"
+"\cjY justo así, se marchó sin decir ni una palabra más, mientras Kirin la miraba confuso. Parece que se aproxima una nueva aventura.\c-";
 ASH_HELP_PAGE2 = "Quien Es Marisa Azanth";
+"Como hija única de la mundialmente conocida piromante \cjSarkha Azanth\c-, \cjMarisa\c- tiene un don no solo para la hechicería, sino también para el uso de armas pesadas. Sí, a pesar de su forma física aparentemente flacucha, es más fuerte de lo que parece, aunque al mismo tiempo no puede moverse muy rápido. Por suerte compensa esa lentitud siendo capaz de resistir mucho daño.\n"
+"\n"
+"Y por el otro lado, también es la hija de una parca. Específicamente, su otra madre es \cjAkari Shiroko\c-, una de las muchas \"damas blancas\" nacidas de la unión entre un humano y un caballero de muerte. Este lazo de sangre específico hace que irradie un aura de cierta oscuridad que hace temblar a los demonios, aun más mientras los sigue masacrando e instilando más terror en sus retorcidos corazones.\n"
+"\n"
+"Así que, en resumen, \cjMarisa\c- es una especie de \"bruja guerrera\", con un don para la piromancia y para usar espadas muy grandes, al mismo tiempo poseyendo también poderes no revelados sobre la propia muerte. Entonces, ¿como es que alguien como ella acabó como la compañera de piso de \cjIbuki\c-? Bueno, eso es algo que solo las dos saben realmente...";
 ASH_HELP_PAGE3 = "Arsenal de Marisa (Parte 1: Armas)";
+"Como es de esperar para una guerrera de su calibre, la gama de armamento de \cjMarisa\c- por supuesto cubre espadas enormes, dos de ellas, específicamente. Aparte de una tercera, muy potente herramienta de destrucción que solo puede ser descrita como un \"asteroide en un palo\". Y debes de pensar entonces, si ese es el caso para las armas a melé, ¿que clase de armas de fuego usaría? Buf, no te lo esperas... Hay tres potentes armas de fuego que complementan las opciones de melé, y cada una de ellas da mucha caña.\n"
+"\n"
+"Ahora bien, la operación de las armas es bastante simple. Todas las armas a melé tienen un ataque débil y otro fuerte, mientras que las armas de fuego solo tienen un modo de operación... Y una sobrecarga. Ciertamente, ningún hechicero puede resistirse a encantar sus propias armas. El fuego alternativo te permite potenciar la munición cargada, a costa de algo de maná, convirtiendo un arma ya potente de por sí en algo con un potencial cataclísmico.\n"
+"\n"
+"¿Y que más hay? Bueno, los hechizos, por supuesto. Tres de ellos seleccionables de forma independiente, e invocados con un botón dedicado. Ya podrás imaginar que esta temible bruja puede hacer algo más que soltar simples chispas.";
 ASH_HELP_PAGE4 = "Arsenal de Marisa (Parte 2: Ítems)";
+"Hay muchas cosas de las que \cjMarisa\c- puede hacer uso en el campo de batalla, para mantenerse en forma, o para añadir un toque extra a sus habilidades de combate.\n"
+"\n"
+"Ya que su ropa ya está blindada de por sí (y además pesa bastante), no necesita nada más por encima, así que en su lugar prefiere usar artefactos mágicos para mejorar su protección. En cuanto a la curación, encontrarás el típico repertorio de ítems. Y hablando de la curación, el hecho de ser \cjAnarukon\c- hace que al resucitar, necesite una potente dosis de \cjExtracto de Akashna\c- para recuperar su salud máxima. Ten eso en cuenta.\n"
+"\n"
+"¿Y que otras cosas hay por ahí? Pues, granadas, eso está claro. Todos las necesitan para algún pequeño trabajo de demolición. Y como siempre igual que en los otros mods, las granadas se lanzan con un botón dedicado.";
 ASH_HELP_PAGE5 = "Arsenal de Marisa (Parte 3: Potenciadores)";
+"Ya deberías haberte acostumbrado a estos si has jugado con los otros mods. Hay muchos de ellos, con toda clase de efectos. Ten en cuenta que no puedes acapararlos todos, así que dales un buen uso.\n"
+"\n"
+"Tal vez el potenciador más notable que este mod introduce es la tal llamada \cjSolución de Fuego Calamitoso\c-. Esta peculiar poción sobrecarga tu propia reserva de maná, y en el proceso la vuelve temporalmente \"caótica\", lo cual se traduce en que todos tus hechizos ganen un potente tinte verde cáustico. No te preocupes, no es dañino para tu propia salud, pero sí que hará MUCHO daño a quien sea tu próximo objetivo.\n"
+"\n"
+"¿Y que más queda por decir? Ya sabes como va la cosa, los potenciadores se activan manualmente, los usos múltiples incrementan su duración total, y el tiempo restante para cada uno se muestra en el HUD.";
 ASH_HELP_PAGE6 = "Consejos Adicionales";
+"\cjMarisa\c- no está sola en esta aventura. En cualquier momento, puede llamar a su novio, un chico fiero y ágil conocido como \cjCinnamon Valentine\c-. Equipado con un rifle de combate potenciado por maná, y experimentado en magia de curación, es el perfecto soporte para el tanque absoluto que es esta mujer. Se esforzará al máximo para seguir tu paso y ofrecer fuego de cobertura mientras blandes tu espada por ahí, y también para tratar tus heridas una vez termine el combate.\n"
+"\n"
+"Ten en cuenta que él también puede caer en combate, pero en cuanto esto ocurra, el propio poder de \cjMarisa\c- evita que llegue a morir, y simplemente necesitará un tiempo de descanso fuera de combate para estar listo la próxima vez que lo llames.\n"
+"\n"
+"Por supuesto, también puedes trabajar por tu cuenta, pero ten en cuenta que tener al chico™ cerca mantiene a \cjMarisa\c- motivada, potenciando su daño y resistencia.";

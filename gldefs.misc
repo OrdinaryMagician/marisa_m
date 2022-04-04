@@ -127,35 +127,17 @@ HardwareShader Texture "graphics/HUD/ManaBarEx.png"
 	Texture "warptex" "textures/roughwarp.png"
 	Define "BASE_RES" = "vec2(100.,5.)"
 }
-HardwareShader Texture "graphics/HUD/BeamgunRound_Boost.png"
-{
-	Shader "shaders/glsl/RoughWarp.fp"
-	Texture "warptex" "textures/roughwarp.png"
-	Define "BASE_RES" = "vec2(5.,2.)"
-}
 HardwareShader Texture "graphics/HUD/BeamgunRound_BoostEx.png"
 {
 	Shader "shaders/glsl/RoughWarp.fp"
 	Texture "warptex" "textures/roughwarp.png"
 	Define "BASE_RES" = "vec2(5.,2.)"
 }
-HardwareShader Texture "graphics/HUD/PistolRound_Boost.png"
-{
-	Shader "shaders/glsl/RoughWarp.fp"
-	Texture "warptex" "textures/roughwarp.png"
-	Define "BASE_RES" = "vec2(16.,5.)"
-}
 HardwareShader Texture "graphics/HUD/PistolRound_BoostEx.png"
 {
 	Shader "shaders/glsl/RoughWarp.fp"
 	Texture "warptex" "textures/roughwarp.png"
 	Define "BASE_RES" = "vec2(16.,5.)"
-}
-HardwareShader Texture "graphics/HUD/ShotgunRound_Boost.png"
-{
-	Shader "shaders/glsl/RoughWarp.fp"
-	Texture "warptex" "textures/roughwarp.png"
-	Define "BASE_RES" = "vec2(6.,3.)"
 }
 HardwareShader Texture "graphics/HUD/ShotgunRound_BoostEx.png"
 {

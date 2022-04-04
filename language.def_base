@@ -60,6 +60,8 @@ STARTUP5 = "";
 D_ONIMILK = "The effects of the Red Oni milk have worn off.";
 D_AMULETFAST = "The Accelerator Amulet's effects have expired.";
 D_AMULETFLY = "The Aerial Amulet ran out of power.";
+ASH_HORNY = "\cbCinnamon\c-: What are you doing? ... Uwah!";
+ASH_HORNY2 = "\cwMarisa\c-: Ah!";
 ASH_TITLEPRESENTSA = "UnSX Team";
 ASH_TITLEPRESENTSB = "presents";
 ASH_TITLEMODBYA = "a mod by";
@@ -76,6 +78,51 @@ ASH_INTERTIME = "YOUR TIME:";
 ASH_INTERPAR = "PAR TIME:";
 ASH_INTERTOTAL = "TOTAL TIME:";
 // weapon tooltips
+TT_MARISAUNARMED =
+"\cw\"I am very strong.\"\c-\n"
+"\n"
+"\cwPrimary fire:\c- Tap to jab, hold to strike.\n"
+"\cwSecondary fire:\c- Kick.\n"
+"Useful when you need to fight quickly.";
+TT_MARISASWORD =
+"\cw\"My most trusted blade.\"\c-\n"
+"\n"
+"\cwPrimary fire:\c- Side swings.\n"
+"\cwSecondary fire:\c- Charged circular swing.\n"
+"Good at slicing and dicing, with proper timing.";
+TT_MARISASLAB =
+"\cw\"A true knight's sword.\"\c-\n"
+"\n"
+"\cwPrimary fire:\c- Slow, heavy swings.\n"
+"\cwSecondary fire:\c- Deadly, overhead swing.\n"
+"Some would think this to be too large and\n"
+"too heavy to even be considered a sword.";
+TT_MARISAHAMMER =
+"\cw\"For crushing all evil.\"\c-\n"
+"\n"
+"\cwPrimary fire:\c- Just swing it.\n"
+"\cwSecondary fire:\c- Drop the hammer.\n"
+"The shockwaves this can cause will\n"
+"push away all enemies around you.";
+TT_MARISAPISTOL =
+"\cw\"A sufficiently sizable handgun.\"\c-\n"
+"\n"
+"\cw23mm HEI\c-, 4 bullets.\n"
+"Bullets release shrapnel on impact.\n"
+"Boosting enhances explosive damage.";
+TT_MARISASHOTGUN =
+"\cw\"A thundering noise, and then silence.\"\c-\n"
+"\n"
+"\cw20mm Frag-C\c-, 5+2 rounds.\n"
+"Acidic damage on point blank.\n"
+"Boosting turns pellets incendiary.";
+TT_MARISABEAMGUN =
+"\cw\"The power of many suns.\"\c-\n"
+"\n"
+"\cwGallium plasma\c-, 2x10 rounds.\n"
+"Piercing ion beam, with moderate range.\n"
+"Boosting increases range and damage,\n"
+"but depletes one magazine per shot.";
 // intermission tips
 ASH_NINTERTIP = "28";
 $ifgame(heretic) ASH_NINTERTIP = "29";

@@ -23,6 +23,7 @@ Class MarisaTitleStuff : EventHandler
 	ui TextureID camtex;	// must be drawn for shaders to actually use it
 	int titletimer;
 	bool bFadeFromBlack;
+	ui Font mSmallFont;
 
 	private ui void TickSmokeLayers()
 	{
@@ -164,6 +165,7 @@ Class MarisaTitleStuff : EventHandler
 		if ( !cinnamontex[2] ) cinnamontex[2] = TexMan.CheckForTexture("graphics/title_cinnamon_eye.png",TexMan.Type_Any);
 		if ( !logotex ) logotex = TexMan.CheckForTexture("graphics/MarisaLogo.png",TexMan.Type_Any);
 		if ( !gradtex ) gradtex = TexMan.CheckForTexture("graphics/title_grad.png",TexMan.Type_Any);
+		if ( !mSmallFont ) mSmallFont = Font.GetFont('TewiFont');
 		double GameSecs = (titletimer+e.FracTic)/GameTicRate;
 		if ( swwm_fuzz )
 		{
@@ -200,23 +202,23 @@ Class MarisaTitleStuff : EventHandler
 			alf = clamp(GameSecs-1,0.,1.);
 			alf *= 1.-clamp(GameSecs-6,0.,1.);
 			String str = StringTable.Localize("$ASH_TITLEPRESENTSA");
-			Screen.DrawText(smallfont,Font.CR_ICE,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2)-(smallfont.GetHeight()*CleanYFac),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			Screen.DrawText(mSmallFont,Font.CR_ICE,(Screen.GetWidth()-mSmallFont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2)-(mSmallFont.GetHeight()*CleanYFac),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
 			str = StringTable.Localize("$ASH_TITLEPRESENTSB");
-			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			Screen.DrawText(mSmallFont,Font.CR_DARKGRAY,(Screen.GetWidth()-mSmallFont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
 			alf = clamp(GameSecs-8,0.,1.);
 			alf *= 1.-clamp(GameSecs-13,0.,1.);
 			str = StringTable.Localize("$ASH_TITLEMODBYA");
-			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2)-(smallfont.GetHeight()*CleanYFac),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			Screen.DrawText(mSmallFont,Font.CR_DARKGRAY,(Screen.GetWidth()-mSmallFont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2)-(mSmallFont.GetHeight()*CleanYFac),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
 			str = StringTable.Localize("$ASH_TITLEMODBYB");
-			Screen.DrawText(smallfont,Font.CR_ICE,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			Screen.DrawText(mSmallFont,Font.CR_ICE,(Screen.GetWidth()-mSmallFont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()/2),str,DTA_CleanNoMove,true,DTA_Alpha,alf);
 			alf = clamp(GameSecs-15,0.,1.);
 			alf *= 1.-clamp(GameSecs-28,0.,1.);
 			str = StringTable.Localize("$ASH_TITLEINTROA");
-			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()-smallfont.GetHeight()*3*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			Screen.DrawText(mSmallFont,Font.CR_DARKGRAY,(Screen.GetWidth()-mSmallFont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()-mSmallFont.GetHeight()*3*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
 			str = StringTable.Localize("$ASH_TITLEINTROB");
-			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()-smallfont.GetHeight()*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			Screen.DrawText(mSmallFont,Font.CR_DARKGRAY,(Screen.GetWidth()-mSmallFont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()-mSmallFont.GetHeight()*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
 			str = StringTable.Localize("$ASH_TITLEINTROC");
-			Screen.DrawText(smallfont,Font.CR_DARKGRAY,(Screen.GetWidth()-smallfont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()+smallfont.GetHeight()*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
+			Screen.DrawText(mSmallFont,Font.CR_DARKGRAY,(Screen.GetWidth()-mSmallFont.StringWidth(str)*CleanXFac)/2,(Screen.GetHeight()+mSmallFont.GetHeight()*CleanYFac)/2,str,DTA_CleanNoMove,true,DTA_Alpha,alf);
 		}
 		// the logo and stuff
 		else

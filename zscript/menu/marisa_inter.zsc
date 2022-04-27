@@ -112,9 +112,9 @@ Class MarisaStatScreen : SWWMStatScreen
 		{
 			if ( !smk[i].maxage ) continue;
 			if ( !smk_tex[i%8] ) smk_tex[i%8] = TexMan.CheckForTexture("graphics/title_smoke_"..(i%8)..".png",TexMan.Type_Any);
-			Vector2 pos = (smk[i].pos+smk[i].vel+(0,base))*zoomscl+(Screen.GetWidth()/2,0);
+			Vector2 pos = (smk[i].pos+smk[i].vel*fractic+(0,base))*zoomscl+(Screen.GetWidth()/2,0);
 			double scl = smk[i].scale*zoomscl;
-			double ang = smk[i].ang+smk[i].angvel;
+			double ang = smk[i].ang+smk[i].angvel*fractic;
 			double alf = cos((smk[i].age/double(smk[i].maxage))*90)*alpha;
 			alf *= clamp(smk[i].age/10.,0,1);
 			Screen.DrawTexture(smk_tex[i%8],false,pos.x,pos.y,DTA_CenterOffset,true,DTA_Rotate,ang,DTA_ScaleX,scl,DTA_ScaleY,scl,DTA_Alpha,alf,DTA_LegacyRenderStyle,STYLE_AddShaded,DTA_FillColor,Color(32,32,32));
@@ -125,9 +125,9 @@ Class MarisaStatScreen : SWWMStatScreen
 		{
 			if ( !ash[i].maxage ) continue;
 			if ( !ash_tex[i%8] ) ash_tex[i%8] = TexMan.CheckForTexture("graphics/title_dust_"..(i%8)..".png",TexMan.Type_Any);
-			Vector2 pos = (ash[i].pos+ash[i].vel+(0,base))*zoomscl+(Screen.GetWidth()/2,0);
+			Vector2 pos = (ash[i].pos+ash[i].vel*fractic+(0,base))*zoomscl+(Screen.GetWidth()/2,0);
 			double scl = ash[i].scale*zoomscl;
-			double ang = ash[i].ang+ash[i].angvel;
+			double ang = ash[i].ang+ash[i].angvel*fractic;
 			double alf = 1.-(ash[i].age/double(ash[i].maxage))**2.;
 			alf *= clamp(ash[i].age/5.,0,1);
 			alf *= ash[i].alpha;
@@ -143,7 +143,7 @@ Class MarisaStatScreen : SWWMStatScreen
 
 	override void drawSWWMBg()
 	{
-		double GameSecs = bcnt/double(GameTicRate);
+		double GameSecs = (bcnt+fractic)/double(GameTicRate);
 		if ( swwm_fuzz )
 		{
 			if ( !bgtex ) bgtex = TexMan.CheckForTexture("graphics/tempbg.png",TexMan.Type_Any);
@@ -167,7 +167,7 @@ Class MarisaStatScreen : SWWMStatScreen
 		RenderSmokeLayer(GameSecs,false,1.);
 		Screen.DrawTexture(gradtex,false,0,Screen.GetHeight(),DTA_DestWidth,Screen.GetWidth(),DTA_DestHeight,512*CleanYFac_1,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(0,0,0),DTA_TopOffset,256,DTA_Alpha,.8);
 		Screen.DrawTexture(marisatex[1],false,Screen.GetWidth()/2+ofs*CleanXFac_1,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
-		double alf = clamp(glarestr/20.,0.,1.)**2;
+		double alf = clamp((glarestr-fractic)/20.,0.,1.)**2;
 		if ( alf > 0. ) Screen.DrawTexture(marisatex[1],false,Screen.GetWidth()/2+ofs*CleanXFac_1,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl,DTA_LegacyRenderStyle,STYLE_Add,DTA_Alpha,alf);
 	}
 }

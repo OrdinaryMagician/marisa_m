@@ -12,6 +12,7 @@ Struct TitleSmoke
 Class MarisaTitleStuff : EventHandler
 {
 	ui TextureID bgtex;
+	ui TextureID bdtex;
 	ui TextureID marisatex[4];
 	ui TextureID cinnamontex[3];
 	ui TitleSmoke smk[128];
@@ -23,7 +24,7 @@ Class MarisaTitleStuff : EventHandler
 	ui TextureID camtex;	// must be drawn for shaders to actually use it
 	int titletimer;
 	bool bFadeFromBlack;
-	ui Font mSmallFont;
+	ui Font mSmallFont, mBigFont;
 
 	private ui void TickSmokeLayers()
 	{
@@ -97,6 +98,18 @@ Class MarisaTitleStuff : EventHandler
 		shnd.titlefirst = true;
 	}
 
+	// GROSS HACK, GROSS HACK
+	static ui bool IsBirthday()
+	{
+		return (SystemTime.Format("%d%m",SystemTime.Now()) == "0410");
+	}
+	static play void SetBirthday()
+	{
+		let hnd = MarisaTitleStuff(EventHandler.Find("MarisaTitleStuff"));
+		if ( !hnd.bFadeFromBlack )
+			hnd.titletimer = -200;
+	}
+
 	override void UiTick()
 	{
 		if ( titletimer == 1 ) S_ChangeMusic("music/marisa_pretitlemus.ogg",looping:false);
@@ -154,6 +167,29 @@ Class MarisaTitleStuff : EventHandler
 
 	override void RenderUnderlay( RenderEvent e )
 	{
+		if ( titletimer < 0 )
+		{
+			Screen.Dim("Black",1.,0,0,Screen.GetWidth(),Screen.GetHeight());
+			if ( !bdtex ) bdtex = TexMan.CheckForTexture("graphics/MarisaIcon.png",TexMan.Type_Any);
+			if ( !mBigFont ) mBigFont = Font.GetFont('TewiFontOutline');
+			double GameSecs = (titletimer+200+e.FracTic)/GameTicRate;
+			double alf;
+			if ( GameSecs < 1.5 ) alf = clamp((GameSecs-1.)*2.,0.,1.);
+			else if ( GameSecs > 5. ) alf = clamp(1.-(GameSecs-5.)*2.,0.,1.);
+			else alf = 1.;
+			double xx, yy;
+			Screen.Dim(Color(8,8,8),alf,0,0,Screen.GetWidth(),Screen.GetHeight());
+			Screen.DrawTexture(bdtex,false,Screen.GetWidth()/2,Screen.GetHeight()/2,DTA_CleanNoMove_1,true,DTA_Alpha,alf);
+			String str = "1989-10-04";
+			xx = int(Screen.GetWidth()-mBigFont.StringWidth(str)*CleanXFac_1*3.)/2;
+			yy = Screen.GetHeight()/2-(72.+mBigFont.GetHeight()*3.)*CleanYFac_1;
+			Screen.DrawText(mBigFont,Font.CR_DARKGRAY,xx,yy,str,DTA_Alpha,alf,DTA_ScaleX,CleanXFac_1*3.,DTA_ScaleY,CleanYFac_1*3.);
+			str = "Happy Birthday, \cwMarisa\c-!";
+			xx = int(Screen.GetWidth()-mBigFont.StringWidth(str)*CleanXFac_1*2.)/2;
+			yy = Screen.GetHeight()/2+72.*CleanYFac_1;
+			Screen.DrawText(mBigFont,Font.CR_DARKGRAY,xx,yy,str,DTA_Alpha,alf,DTA_ScaleX,CleanXFac_1*2.,DTA_ScaleY,CleanYFac_1*2.);
+			return;
+		}
 		Screen.DrawTexture(camtex,false,0,0);
 		if ( !camtex ) camtex = TexMan.CheckForTexture("LOGOFADE",TexMan.Type_Any);
 		if ( !marisatex[0] ) marisatex[0] = TexMan.CheckForTexture("graphics/title_marisa_dark.png",TexMan.Type_Any);

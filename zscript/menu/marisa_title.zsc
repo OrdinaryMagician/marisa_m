@@ -11,6 +11,7 @@ Struct TitleSmoke
 
 Class MarisaTitleStuff : EventHandler
 {
+	ui bool bInitialized;
 	ui TextureID bgtex;
 	ui TextureID bdtex;
 	ui TextureID marisatex[4];
@@ -22,8 +23,9 @@ Class MarisaTitleStuff : EventHandler
 	ui TextureID logotex;
 	ui TextureID gradtex;
 	ui TextureID camtex;	// must be drawn for shaders to actually use it
-	int titletimer;
-	bool bFadeFromBlack;
+	ui int titletimer;
+	int playtimer;	// required for the logo fader
+	ui bool bFadeFromBlack;
 	ui Font mSmallFont, mBigFont;
 	ui bool bCinnamonBirthday;
 
@@ -78,57 +80,59 @@ Class MarisaTitleStuff : EventHandler
 		}
 	}
 
-	override void WorldTick()
-	{
-		titletimer++;
-	}
-
 	override void WorldLoaded( WorldEvent e )
 	{
 		let f = LogoFader(Actor.Spawn("LogoFader"));
 		f.hnd = self;
 		TexMan.SetCameraToTexture(f,"LOGOFADE",90);
-		titletimer = 0;
-		let shnd = SWWMStaticHandler(StaticEventHandler.Find("SWWMStaticHandler"));
-		if ( !shnd ) return;
-		if ( shnd.titlefirst )
-		{
-			titletimer = GameTicRate*30;	// skip to logo
-			bFadeFromBlack = true;	// fade from black
-		}
-		shnd.titlefirst = true;
+		// fallback in case netevents fail (old gzdoom)
+		playtimer = -65536;
 	}
 
-	// GROSS HACK, GROSS HACK
-	static ui bool IsBirthday()
+	// synchronize ui->play timer
+	override void NetworkProcess( ConsoleEvent e )
 	{
-		if ( SystemTime.Format("%d%m",SystemTime.Now()) == "1004" )
-		{
-			let hnd = MarisaTitleStuff(EventHandler.Find("MarisaTitleStuff"));
-			hnd.bCinnamonBirthday = true;
-			return true;
-		}
-		return (SystemTime.Format("%d%m",SystemTime.Now()) == "0410");
-	}
-	static play void SetBirthday()
-	{
-		let hnd = MarisaTitleStuff(EventHandler.Find("MarisaTitleStuff"));
-		if ( !hnd.bFadeFromBlack )
-			hnd.titletimer = -200;
+		if ( e.Name == "swwmtitle.timer" )
+			playtimer = e.Args[0];
 	}
 
 	override void UiTick()
 	{
+		// you're not supposed to be here
+		if ( gamestate == GS_LEVEL )
+			ThrowAbortException("Attempted to warp into TITLEMAP");
+		if ( !bInitialized )
+		{
+			bInitialized = true;
+			titletimer = 0;
+			// birthday event
+			if ( SystemTime.Format("%d%m",SystemTime.Now()) == "1004" )
+			{
+				bCinnamonBirthday = true;
+				titletimer = -200;
+			}
+			else if ( SystemTime.Format("%d%m",SystemTime.Now()) == "0410" )
+			{
+				bCinnamonBirthday = false;
+				titletimer = -200;
+			}
+			let shnd = SWWMStaticHandler(StaticEventHandler.Find("SWWMStaticHandler"));
+			if ( shnd )
+			{
+				if ( shnd.titlefirst )
+				{
+					titletimer = GameTicRate*30;	// skip to logo
+					bFadeFromBlack = true;	// fade from black
+				}
+				shnd.titlefirst = true;
+			}
+		}
 		if ( titletimer == 1 ) S_ChangeMusic("music/marisa_pretitlemus.ogg",looping:false);
 		else if ( titletimer == (31*GameTicRate) ) S_StartSound("title/fadein",CHAN_WEAPON,CHANF_OVERLAP|CHANF_UI,1.,0.);
 		else if ( titletimer == (32*GameTicRate) ) S_ChangeMusic("music/marisa_titlemus.ogg");
 		TickSmokeLayers();
-		if ( gamestate != GS_LEVEL ) return;
-		// you're not supposed to be here
-		Menu.SetMenu('EndGameMenu');
-		let m = MessageBoxMenu(Menu.GetCurrentMenu());
-		if ( m ) m.HandleResult(true);
-		// special thanks to marrub for this absolute crime
+		titletimer++;
+		EventHandler.SendNetworkEvent("swwmtitle.timer",titletimer);
 	}
 
 	private ui void RenderSmokeLayer( RenderEvent e, double GameSecs, bool back, double alpha = 1. )
@@ -314,7 +318,14 @@ Class MarisaTitleStuff : EventHandler
 				alf = clamp(1.-(GameSecs-30.),.0,.5);
 				Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
 			}
-			Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-128*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl);
+			// use a normal fade as fallback
+			// (looks worse, but it's better than the logo just popping out of nowhere)
+			if ( (playtimer == -65536) && (titletimer < 34*GameTicRate) )
+			{
+				alf = clamp((GameSecs-30.)*.25,0.,1.);
+				Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-128*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl,DTA_Alpha,alf);
+			}
+			else Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-128*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl);
 		}
 	}
 }
@@ -347,8 +358,15 @@ Class LogoFader : Actor
 	}
 	override void Tick()
 	{
-		double alf1 = clamp(((double(hnd.titletimer)/GameTicRate)-30.)*.25,0.,1.);
-		double alf2 = clamp(((double(hnd.titletimer)/GameTicRate)-30.5)*.5,0.,1.);
+		// old gzdoom fallback
+		// won't look as nice, but it's better than nothing
+		if ( hnd.playtimer == -65536 )
+		{
+			base.SetShade(Color(255,255,0));
+			return;
+		}
+		double alf1 = clamp(((double(hnd.playtimer)/GameTicRate)-30.)*.25,0.,1.);
+		double alf2 = clamp(((double(hnd.playtimer)/GameTicRate)-30.5)*.5,0.,1.);
 		base.SetShade(Color(int(255*alf1),int(255*alf2),0));
 	}
 }

@@ -127,10 +127,10 @@ gunlance/hitf3	sounds/cinnamom/cinnabun_gunlance_hitf3.ogg
 
 title/fadein	sounds/title_fadein.ogg
 
-wrath/fire1	sounds/wrath/wrath_fire1.ogg
-wrath/fire2	sounds/wrath/wrath_fire2.ogg
-wrath/fire3	sounds/wrath/wrath_fire3.ogg
-$random wrath/fire { wrath/fire1 wrath/fire2 wrath/fire3 }
+wrath/altfire1	sounds/wrath/wrath_altfire1.ogg
+wrath/altfire2	sounds/wrath/wrath_altfire2.ogg
+wrath/altfire3	sounds/wrath/wrath_altfire3.ogg
+$random wrath/altfire { wrath/altfire1 wrath/altfire2 wrath/altfire3 }
 
-$alias misc/interstart wrath/fire
+$alias misc/interstart wrath/altfire // temporary
 $alias misc/interdone misc/w_pkup_vip // temporary

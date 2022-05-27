@@ -104,8 +104,7 @@ Charges for the cannon. They come solo, or in pairs.
 
 ## Spells
 
-There are three main spells that **Marisa** likes to use in battle, each more potent than the last. Selected with either their respective slot keys or cycled with dedicated binds. They can be used anytime by pressing **Zoom**. You have a fairly sizable mana pool, which regenerates over time. Do note that this regeneration speed decreases the lower your current mana is, however,
-so try not to abuse spellcasting too much.
+There are three main spells that **Marisa** likes to use in battle, each more potent than the last. Selected with either their respective slot keys or cycled with dedicated binds. They can be used anytime by pressing the **Cast Spell** button. You have a fairly sizable mana pool, which regenerates over time. Do note that this regeneration speed decreases the lower your current mana is, however, so try not to abuse spellcasting too much.
 
 ### Slot 8 - Abyssal Embers
 

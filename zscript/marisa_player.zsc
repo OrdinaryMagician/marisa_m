@@ -22,12 +22,13 @@ Class MarisaPlayer : SWWMPlayer
 		Player.SoundClass "marisa";
 		Player.ViewBob .6;
 		SWWMPlayer.MoveSpeed .3, .8;
-		SWWMPlayer.DodgeSpeed 10;
+		SWWMPlayer.DodgeSpeed 12;
 		SWWMPlayer.MinCrouch .45;	// ensure same crouching height as a 56 unit tall player
 		SWWMPlayer.ResurrectType RT_RESPAWN;
 		SWWMPlayer.PainThresholds 0, 15, 40, 50;
 		SWWMPlayer.HealthDecrease 50, 10;
 		SWWMPlayer.Buoyancy .8;
+		SWWMPlayer.DodgeDelay 30;
 		+SWWMPLAYER.CANDODGE;
 	}
 

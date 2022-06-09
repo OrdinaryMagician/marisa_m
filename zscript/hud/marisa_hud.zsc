@@ -249,8 +249,8 @@ Class MarisaStatusBar : SWWMStatusBar
 		yy = ss.y-(margin+42);
 		Screen.DrawTexture(AmmoTex,false,xx,yy,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 		xx += 2;
-		yy += 20;
-		for ( int i=0; i<4; i++, yy-=6 )
+		yy += 2;
+		for ( int i=0; i<4; i++, yy+=6 )
 		{
 			int amt, amax;
 			bool selected = false;

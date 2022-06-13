@@ -66,7 +66,7 @@ Class MarisaStatusBar : SWWMStatusBar
 		for ( int i=0; i<4; i++ )
 		{
 			let amt = CPlayer.mo.CountInv(AmmoSlots[i]);
-			if ( amt > AmmoOldAmounts[i] )
+			if ( (amt > AmmoOldAmounts[i]) && (AmmoOldAmounts[i] != int.min) )
 				AmmoFlash[i] = gametic+25;
 			AmmoOldAmounts[i] = amt;
 		}
@@ -255,7 +255,7 @@ Class MarisaStatusBar : SWWMStatusBar
 			int amt, amax;
 			bool selected = false;
 			let a = AmmoSlots[i];
-			let cur = Ammo(CPlayer.mo.FindInventory(a));
+			let cur = SWWMAmmo(CPlayer.mo.FindInventory(a));
 			// mag ammo isn't used in this mod, so we can simplify
 			if ( !cur )
 			{
@@ -287,8 +287,6 @@ Class MarisaStatusBar : SWWMStatusBar
 			Screen.DrawText(MiniHUDFont,ncolor,xx+20,yy,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
 			str = String.Format("%3d",clamp(amax,0,999));
 			Screen.DrawText(MiniHUDFont,scol,xx+38,yy,str,DTA_VirtualWidthF,ss.x,DTA_VirtualHeightF,ss.y,DTA_KeepRatio,true);
-			if ( (AmmoOldAmounts[i] != int.min) && (amt > AmmoOldAmounts[i]) ) AmmoFlash[i] = gametic+25;
-			AmmoOldAmounts[i] = amt;
 			let f = AmmoFlash[i];
 			if ( f && (gametic < f) )
 			{

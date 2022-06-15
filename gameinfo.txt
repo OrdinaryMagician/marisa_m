@@ -1,4 +1,4 @@
 STARTUPCOLORS = "A0 00 00", "80 00 00"
 STARTUPTITLE = "CHILD OF ASH"
 STARTUPTYPE = "Hexen"
-STARTUPSONG = "music/marisa_intermus.ogg"
+STARTUPSONG = ""

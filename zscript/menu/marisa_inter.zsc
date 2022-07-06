@@ -135,12 +135,6 @@ Class MarisaStatScreen : SWWMStatScreen
 		}
 	}
 
-	// heh
-	private clearscope double smerp( double a ) const
-	{
-		return (sin((a-.5)*180.)+1.)/2.;
-	}
-
 	override void drawSWWMBg()
 	{
 		double GameSecs = (bcnt+fractic)/double(GameTicRate);
@@ -162,7 +156,7 @@ Class MarisaStatScreen : SWWMStatScreen
 		if ( !marisatex[1] ) marisatex[1] = TexMan.CheckForTexture("graphics/title_marisa_eyes.png",TexMan.Type_Any);
 		double ofs;
 		if ( sp_state >= 2 ) ofs = 120;
-		else ofs = 120*smerp(clamp(GameSecs,0.,1.));
+		else ofs = 120*SWWMUtility.smerp(clamp(GameSecs,0.,1.));
 		Screen.DrawTexture(marisatex[0],false,Screen.GetWidth()/2+ofs*CleanXFac_1,0,DTA_ScaleX,texscl,DTA_ScaleY,texscl);
 		RenderSmokeLayer(GameSecs,false,1.);
 		Screen.DrawTexture(gradtex,false,0,Screen.GetHeight(),DTA_DestWidth,Screen.GetWidth(),DTA_DestHeight,512*CleanYFac_1,DTA_LegacyRenderStyle,STYLE_Shaded,DTA_FillColor,Color(0,0,0),DTA_TopOffset,256,DTA_Alpha,.8);

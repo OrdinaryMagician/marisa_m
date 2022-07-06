@@ -170,12 +170,6 @@ Class MarisaTitleStuff : EventHandler
 		}
 	}
 
-	// heh
-	private clearscope double smerp( double a ) const
-	{
-		return (sin((a-.5)*180.)+1.)/2.;
-	}
-
 	override void RenderUnderlay( RenderEvent e )
 	{
 		if ( titletimer < 0 )
@@ -270,7 +264,7 @@ Class MarisaTitleStuff : EventHandler
 		// the logo and stuff
 		else
 		{
-			double ofs = 150*smerp(clamp((GameSecs-31)/2.,0.,1.));
+			double ofs = 150*SWWMUtility.smerp(clamp((GameSecs-31)/2.,0.,1.));
 			if ( titletimer < 34*GameTicRate )
 			{
 				alf = clamp((GameSecs-30.)/2.,0.,1.);

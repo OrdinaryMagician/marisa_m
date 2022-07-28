@@ -22,9 +22,8 @@ Class MarisaTitleStuff : EventHandler
 	ui TextureID ash_tex[8];
 	ui TextureID logotex;
 	ui TextureID gradtex;
-	ui TextureID camtex;	// must be drawn for shaders to actually use it
+	ui canvas lfade;
 	ui int titletimer;
-	int playtimer;	// required for the logo fader
 	ui bool bFadeFromBlack;
 	ui Font mSmallFont, mBigFont;
 	ui bool bCinnamonBirthday;
@@ -78,22 +77,6 @@ Class MarisaTitleStuff : EventHandler
 				ash[i].ang += ash[i].angvel;
 			}
 		}
-	}
-
-	override void WorldLoaded( WorldEvent e )
-	{
-		let f = LogoFader(Actor.Spawn("LogoFader"));
-		f.hnd = self;
-		TexMan.SetCameraToTexture(f,"LOGOFADE",90);
-		// fallback in case netevents fail (old gzdoom)
-		playtimer = -65536;
-	}
-
-	// synchronize ui->play timer
-	override void NetworkProcess( ConsoleEvent e )
-	{
-		if ( e.Name == "swwmtitle.timer" )
-			playtimer = e.Args[0];
 	}
 
 	override void UiTick()
@@ -195,8 +178,7 @@ Class MarisaTitleStuff : EventHandler
 			Screen.DrawText(mBigFont,Font.CR_DARKGRAY,xx,yy,str,DTA_Alpha,alf,DTA_ScaleX,CleanXFac_1*2.,DTA_ScaleY,CleanYFac_1*2.);
 			return;
 		}
-		Screen.DrawTexture(camtex,false,0,0);
-		if ( !camtex ) camtex = TexMan.CheckForTexture("LOGOFADE",TexMan.Type_Any);
+		if ( !lfade ) lfade = TexMan.GetCanvas("LOGOFADE");
 		if ( !marisatex[0] ) marisatex[0] = TexMan.CheckForTexture("graphics/title_marisa_dark.png",TexMan.Type_Any);
 		if ( !marisatex[1] ) marisatex[1] = TexMan.CheckForTexture("graphics/title_marisa_dark_eyes.png",TexMan.Type_Any);
 		if ( !marisatex[2] ) marisatex[2] = TexMan.CheckForTexture("graphics/title_marisa.png",TexMan.Type_Any);
@@ -218,6 +200,9 @@ Class MarisaTitleStuff : EventHandler
 			Screen.Dim(Color(8,8,8),1.-clamp((GameSecs-30),.1,1.),0,0,Screen.GetWidth(),Screen.GetHeight());
 		}
 		else Screen.Dim(Color(8,8,8),1.,0,0,Screen.GetWidth(),Screen.GetHeight());
+		double alf1 = clamp((GameSecs-30.)*.25,0.,1.);
+		double alf2 = clamp((GameSecs-30.5)*.5,0.,1.);
+		lfade.Clear(0,0,4,4,Color(int(255*alf1),int(255*alf2),0));
 		double alf;
 		String str;
 		double texscl = Screen.GetHeight()/1300.;
@@ -312,78 +297,7 @@ Class MarisaTitleStuff : EventHandler
 				alf = clamp(1.-(GameSecs-30.),.0,.5);
 				Screen.Dim("Black",alf,0,0,Screen.GetWidth(),Screen.GetHeight());
 			}
-			// use a normal fade as fallback
-			// (looks worse, but it's better than the logo just popping out of nowhere)
-			if ( (playtimer == -65536) && (titletimer < 34*GameTicRate) )
-			{
-				alf = clamp((GameSecs-30.)*.25,0.,1.);
-				Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-128*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl,DTA_Alpha,alf);
-			}
-			else Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-128*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl);
+			Screen.DrawTexture(logotex,false,Screen.GetWidth()/2-1024*logoscl,Screen.GetHeight()/2-128*logoscl,DTA_ScaleX,logoscl,DTA_ScaleY,logoscl);
 		}
-	}
-}
-
-const LOGOFADERBASE = 60000.;
-
-Class LogoFader : Actor
-{
-	Actor base;
-	MarisaTitleStuff hnd;
-
-	Default
-	{
-		+NOGRAVITY;
-		+NOBLOCKMAP;
-		+NOINTERACTION;
-		+DONTSPLASH;
-		Radius .1;
-		Height 0;
-	}
-
-	override void PostBeginPlay()
-	{
-		SetOrigin((LOGOFADERBASE+32,LOGOFADERBASE,0),false);
-		SetZ(floorz);
-		roll = 180;
-		angle = 180;
-		double halfstretch = (1.+level.pixelstretch)/2.;
-		if ( !base ) base = Spawn("LogoFaderSurface",(LOGOFADERBASE,LOGOFADERBASE-32.,floorz+32.*halfstretch));
-	}
-	override void Tick()
-	{
-		// old gzdoom fallback
-		// won't look as nice, but it's better than nothing
-		if ( hnd.playtimer == -65536 )
-		{
-			base.SetShade(Color(255,255,0));
-			return;
-		}
-		double alf1 = clamp(((double(hnd.playtimer)/GameTicRate)-30.)*.25,0.,1.);
-		double alf2 = clamp(((double(hnd.playtimer)/GameTicRate)-30.5)*.5,0.,1.);
-		base.SetShade(Color(int(255*alf1),int(255*alf2),0));
-	}
-}
-
-Class LogoFaderSurface : Actor
-{
-	Default
-	{
-		Radius .1;
-		Height 0.;
-		RenderRadius 256;
-		+NOBLOCKMAP;
-		+NOGRAVITY;
-		+NOINTERACTION;
-		+DONTSPLASH;
-		+WALLSPRITE;
-		RenderStyle "Stencil";
-	}
-	override void Tick(){}
-	States
-	{
-	Spawn:
-		LGFD A -1 Bright;
-		Stop;
 	}
 }
